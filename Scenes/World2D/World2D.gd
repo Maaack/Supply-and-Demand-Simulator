@@ -6,12 +6,24 @@ var character_ratio : float = 0.5
 var character_count : int = 10
 var character_array : Array = []
 
+func set_character_position_to_random(character : BaseCharacter):
+	var new_x : float = rand_range(100.0, 924.0)
+	var new_y : float = rand_range(100.0, 500.0)
+	character.move_to(Vector2(new_x, new_y))
+
+func set_character_position_to_circle(character : BaseCharacter):
+	var character_index = character_array.find(character)
+	if character_index == -1:
+		return
+	var a : float = character_index * 2 * PI / character_count
+	var new_x : float = sin(a) * 300.0 + 512.0
+	var new_y : float = cos(a) * 300.0 + 300.0
+	character.move_to(Vector2(new_x, new_y))
+
 func add_character():
 	var base_character_instance : BaseCharacter = base_character_scene.instance()
 	add_child(base_character_instance)
-	var new_x : float = rand_range(100.0, 924.0)
-	var new_y : float = rand_range(100.0, 500.0)
-	base_character_instance.position = Vector2(new_x, new_y)
+	set_character_position_to_random(base_character_instance)
 	character_array.append(base_character_instance)
 	return base_character_instance
 
@@ -47,3 +59,8 @@ func _ready():
 			set_character_to_buyer(character)
 		else:
 			set_character_to_seller(character)
+	$StartUpDelay.start()
+
+func _on_StartUpDelay_timeout():
+	for character in character_array:
+		set_character_position_to_circle(character)
