@@ -28,7 +28,6 @@ func set_price_point(value : float):
 
 func move_to(new_position : Vector2, time_to : float = 1.0):
 	if $Tween.is_active():
-		$Tween.seek($Tween.get_runtime())
 		$Tween.stop_all()
 	$Tween.interpolate_property(self, "position", position, new_position, time_to)
 	$Tween.start()

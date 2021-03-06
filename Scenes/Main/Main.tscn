@@ -40,4 +40,30 @@ tick_count = 101
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RandomButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 59.2163
+margin_top = -30.0793
+margin_right = 142.216
+margin_bottom = -10.0793
+text = "Random"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CirclesButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 171.537
+margin_top = -29.6074
+margin_right = 254.537
+margin_bottom = -9.60742
+text = "Circles"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
+[connection signal="pressed" from="CirclesButton" to="." method="_on_CirclesButton_pressed"]
