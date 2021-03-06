@@ -8,6 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 569.782 ],
 "_edit_use_anchors_": false
 }
 
@@ -44,26 +45,39 @@ __meta__ = {
 [node name="RandomButton" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 59.2163
-margin_top = -30.0793
-margin_right = 142.216
-margin_bottom = -10.0793
+margin_left = 20.224
+margin_top = -30.2183
+margin_right = 103.224
+margin_bottom = -10.2183
 text = "Random"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CirclesButton" type="Button" parent="."]
+[node name="OneCircleButton" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 171.537
-margin_top = -29.6074
-margin_right = 254.537
-margin_bottom = -9.60742
-text = "Circles"
+margin_left = 124.868
+margin_top = -30.2183
+margin_right = 207.868
+margin_bottom = -10.2183
+text = "1-Circle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TwoCirclesButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 228.106
+margin_top = -30.2183
+margin_right = 311.106
+margin_bottom = -10.2183
+text = "2-Circles"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="RandomButton" to="." method="_on_RandomButton_pressed"]
-[connection signal="pressed" from="CirclesButton" to="." method="_on_CirclesButton_pressed"]
+[connection signal="pressed" from="OneCircleButton" to="." method="_on_OneCircleButton_pressed"]
+[connection signal="pressed" from="TwoCirclesButton" to="." method="_on_TwoCirclesButton_pressed"]

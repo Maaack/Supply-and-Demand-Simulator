@@ -7,7 +7,8 @@ var base_character_scene = preload("res://Scenes/Characters/BaseCharacter.tscn")
 var character_ratio : float = 0.5
 var character_count : int = 25
 var character_array : Array = []
-var character_layout_setting : int = CharacterLayout.DOUBLE_CIRCLE
+var character_layout_setting : int = CharacterLayout.CIRCLE
+var center_offset : Vector2 = Vector2(960, 520.0)
 
 func set_character_position_to_random(character : BaseCharacter):
 	var new_x : float = rand_range(100.0, 1820.0)
@@ -15,8 +16,7 @@ func set_character_position_to_random(character : BaseCharacter):
 	character.move_to(Vector2(new_x, new_y))
 
 func set_character_position_to_circle(character : BaseCharacter):
-	var radius : float = 300.0
-	var center_offset = Vector2(512.0, 300.0)
+	var radius : float = 400.0
 	var character_index = character_array.find(character)
 	if character_index == -1:
 		return
@@ -27,7 +27,6 @@ func set_character_position_to_circle(character : BaseCharacter):
 func set_character_position_to_double_circle(character : BaseCharacter):
 	var radius : float = 80.0
 	var radius_outer : float = 400.0
-	var center_offset = Vector2(960, 520.0)
 	var character_index = character_array.find(character)
 	if character_index == -1:
 		return
