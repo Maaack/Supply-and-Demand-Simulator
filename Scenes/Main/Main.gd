@@ -14,3 +14,6 @@ func _on_OneCircleButton_pressed():
 
 func _on_TwoCirclesButton_pressed():
 	world_2d.update_layout(world_2d.CharacterLayout.DOUBLE_CIRCLE)
+
+func _on_VSlider_value_changed(value : float):
+	world_2d.time_scale = value

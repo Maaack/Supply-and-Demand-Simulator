@@ -9,11 +9,18 @@ var character_count : int = 25
 var character_array : Array = []
 var character_layout_setting : int = CharacterLayout.CIRCLE
 var center_offset : Vector2 = Vector2(960, 520.0)
+var default_time_to : float = 1.0
+var time_scale : float = 5.0
+
+func get_time_to():
+	if time_scale == 0.0:
+		return
+	return default_time_to/time_scale
 
 func set_character_position_to_random(character : BaseCharacter):
 	var new_x : float = rand_range(100.0, 1820.0)
 	var new_y : float = rand_range(100.0, 980.0)
-	character.move_to(Vector2(new_x, new_y))
+	character.move_to(Vector2(new_x, new_y), get_time_to())
 
 func set_character_position_to_circle(character : BaseCharacter):
 	var radius : float = 400.0
@@ -22,7 +29,7 @@ func set_character_position_to_circle(character : BaseCharacter):
 		return
 	var a : float = character_index * 2 * PI / character_count
 	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
-	character.move_to(new_vector)
+	character.move_to(new_vector, get_time_to())
 
 func set_character_position_to_double_circle(character : BaseCharacter):
 	var radius : float = 80.0
@@ -39,7 +46,7 @@ func set_character_position_to_double_circle(character : BaseCharacter):
 		role_count = character_count - buyer_count
 	var a : float = character_delta * 2 * PI / role_count
 	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
-	character.move_to(new_vector)
+	character.move_to(new_vector, get_time_to())
 
 func add_character():
 	var base_character_instance : BaseCharacter = base_character_scene.instance()
