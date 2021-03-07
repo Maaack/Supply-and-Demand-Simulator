@@ -13,6 +13,13 @@ export var seller_color : Color
 
 var character_role : int
 var price_point : float
+var home_position : Vector2
+
+func set_home(position : Vector2):
+	home_position = position
+
+func is_home():
+	return home_position == position
 
 func set_role(value : int):
 	character_role = value
@@ -31,3 +38,7 @@ func move_to(new_position : Vector2, time_to : float = 1.0):
 		$Tween.stop_all()
 	$Tween.interpolate_property(self, "position", position, new_position, time_to)
 	$Tween.start()
+
+func go_home(time_to : float = 1.0):
+	move_to(home_position, time_to)
+

@@ -11,6 +11,8 @@ var character_layout_setting : int = CharacterLayout.CIRCLE
 var center_offset : Vector2 = Vector2(960, 520.0)
 var default_time_to : float = 1.0
 var time_scale : float = 5.0
+var default_step_time : float = 1.0
+var character_control_counter : int = 0
 
 func get_time_to():
 	if time_scale == 0.0:
@@ -20,7 +22,7 @@ func get_time_to():
 func set_character_position_to_random(character : BaseCharacter):
 	var new_x : float = rand_range(100.0, 1820.0)
 	var new_y : float = rand_range(100.0, 980.0)
-	character.move_to(Vector2(new_x, new_y), get_time_to())
+	character.set_home(Vector2(new_x, new_y))
 
 func set_character_position_to_circle(character : BaseCharacter):
 	var radius : float = 400.0
@@ -29,7 +31,7 @@ func set_character_position_to_circle(character : BaseCharacter):
 		return
 	var a : float = character_index * 2 * PI / character_count
 	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
-	character.move_to(new_vector, get_time_to())
+	character.set_home(new_vector)
 
 func set_character_position_to_double_circle(character : BaseCharacter):
 	var radius : float = 80.0
@@ -46,7 +48,7 @@ func set_character_position_to_double_circle(character : BaseCharacter):
 		role_count = character_count - buyer_count
 	var a : float = character_delta * 2 * PI / role_count
 	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
-	character.move_to(new_vector, get_time_to())
+	character.set_home(new_vector)
 
 func add_character():
 	var base_character_instance : BaseCharacter = base_character_scene.instance()
@@ -56,7 +58,7 @@ func add_character():
 	return base_character_instance
 
 func get_buyer_count():
-	return round(character_count * character_ratio)
+	return int(round(character_count * character_ratio))
 
 func set_character_to_buyer(character : BaseCharacter):
 	character.set_role(BaseCharacter.CharacterRoles.BUYER)
@@ -105,6 +107,33 @@ func _update_character_positions():
 				set_character_position_to_circle(character)
 			CharacterLayout.DOUBLE_CIRCLE:
 				set_character_position_to_double_circle(character)
+		character.go_home(get_time_to())
 
 func _on_StartUpDelay_timeout():
 	_update_character_positions()
+	$SimulateStep.start()
+
+func get_buying_position(buyer : BaseCharacter, seller : BaseCharacter, buy_distance : float = 50.0):
+	var delta_vector : Vector2 = seller.position - buyer.position
+	var buy_vector = delta_vector.normalized() * buy_distance
+	return delta_vector - buy_vector + buyer.position
+
+func _update_simulate_step_time():
+	$SimulateStep.wait_time = default_step_time / time_scale
+
+func _on_SimulateStep_timeout():
+	_update_simulate_step_time()
+	var current_character : BaseCharacter = character_array[character_control_counter]
+	if current_character.character_role == BaseCharacter.CharacterRoles.BUYER:
+		if current_character.is_home():
+			var buyer_count = get_buyer_count()
+			var seller_count = character_count - buyer_count
+			var random_seller_i = randi() % seller_count + buyer_count
+			var random_seller = character_array[random_seller_i]
+			var buy_position = get_buying_position(current_character, random_seller)
+			current_character.move_to(buy_position, get_time_to())
+		else:
+			current_character.go_home(get_time_to())
+	character_control_counter += 1
+	if character_control_counter >= get_buyer_count():
+		character_control_counter = 0

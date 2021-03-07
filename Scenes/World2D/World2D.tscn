@@ -7,4 +7,8 @@ script = ExtResource( 1 )
 
 [node name="StartUpDelay" type="Timer" parent="."]
 one_shot = true
+
+[node name="SimulateStep" type="Timer" parent="."]
+wait_time = 0.2
 [connection signal="timeout" from="StartUpDelay" to="." method="_on_StartUpDelay_timeout"]
+[connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]
