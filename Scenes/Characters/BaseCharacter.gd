@@ -26,8 +26,10 @@ func set_role(value : int):
 	match character_role:
 		CharacterRoles.BUYER:
 			sprite_node.modulate = buyer_color
+			basic_bar_ui.modulate = buyer_color
 		CharacterRoles.SELLER:
 			sprite_node.modulate = seller_color
+			basic_bar_ui.modulate = seller_color
 
 func set_price_point(value : float):
 	price_point = value

@@ -81,6 +81,7 @@ func update_ratio(value : float):
 			if is_instance_valid(current_character):
 				set_character_to_seller(current_character)
 	if prior_count != current_count:
+		_update_character_prices()
 		if character_layout_setting == CharacterLayout.DOUBLE_CIRCLE:
 			_update_character_positions()
 
@@ -92,6 +93,7 @@ func _ready():
 			set_character_to_buyer(character)
 		else:
 			set_character_to_seller(character)
+	_update_character_prices()
 	$StartUpDelay.start()
 
 func update_layout(new_layout : int):
@@ -108,6 +110,18 @@ func _update_character_positions():
 			CharacterLayout.DOUBLE_CIRCLE:
 				set_character_position_to_double_circle(character)
 		character.go_home(get_time_to())
+
+func _update_character_prices():
+	var buyer_count : int = get_buyer_count()
+	var i : int = 0
+	var total : int = buyer_count
+	for character in character_array:
+		if i >= total:
+			i -= buyer_count
+			total = character_count - buyer_count
+		var amount : float = 100.0 * float(i) / float(total)
+		character.set_price_point(amount)
+		i += 1
 
 func _on_StartUpDelay_timeout():
 	_update_character_positions()

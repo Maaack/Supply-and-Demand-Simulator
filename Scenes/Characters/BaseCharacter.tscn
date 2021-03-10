@@ -10,7 +10,6 @@ buyer_color = Color( 0.976471, 0.615686, 0.0588235, 1 )
 seller_color = Color( 0.141176, 0.2, 0.67451, 1 )
 
 [node name="BasicBarUI" parent="." instance=ExtResource( 1 )]
-visible = false
 margin_left = -12.5008
 margin_top = -63.0992
 margin_right = -12.5008

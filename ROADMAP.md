@@ -19,4 +19,10 @@
         * Buyers move to a point near a seller
         * Buyers initiate a negotiation
         * Buyers move back to home position
-
+* Character price bar
+    * Evenly distribute offers of buying and selling between characters
+* Stages
+    * Travel to seller
+    * Transaction
+    * Travel to home
+    * Update
