@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "BaseCharacter",
 "language": "GDScript",
 "path": "res://Scenes/Characters/BaseCharacter.gd"
+}, {
+"base": "Control",
+"class": "BasicBarUI",
+"language": "GDScript",
+"path": "res://Scenes/UI/BasicBar/BasicBarUI.gd"
 } ]
 _global_script_class_icons={
-"BaseCharacter": ""
+"BaseCharacter": "",
+"BasicBarUI": ""
 }
 
 [application]

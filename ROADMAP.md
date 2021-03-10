@@ -21,6 +21,7 @@
         * Buyers move back to home position
 * Character price bar
     * Evenly distribute offers of buying and selling between characters
+    * Add second bar to indicate expectation
 * Stages
     * Travel to seller
     * Transaction

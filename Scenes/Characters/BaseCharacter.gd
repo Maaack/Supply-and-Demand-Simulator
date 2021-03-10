@@ -5,7 +5,7 @@ class_name BaseCharacter
 
 enum CharacterRoles{BUYER, SELLER}
 
-onready var basic_bar_ui = $BasicBarUI
+onready var basic_bar_ui = $DoubleBarUI
 onready var sprite_node = $Sprite
 
 export var buyer_color : Color
