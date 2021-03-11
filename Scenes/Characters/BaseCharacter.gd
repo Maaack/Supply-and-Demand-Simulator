@@ -13,6 +13,7 @@ export var seller_color : Color
 
 var character_role : int
 var price_point : float
+var current_price_point : float
 var home_position : Vector2
 
 func set_home(position : Vector2):
@@ -34,6 +35,10 @@ func set_role(value : int):
 func set_price_point(value : float):
 	price_point = value
 	basic_bar_ui.set_base(price_point)
+
+func set_current_price_point(value : float):
+	current_price_point = value
+	basic_bar_ui.set_current(current_price_point)
 
 func move_to(new_position : Vector2, time_to : float = 1.0):
 	if $Tween.is_active():

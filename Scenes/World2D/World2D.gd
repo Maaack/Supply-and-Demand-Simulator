@@ -13,6 +13,7 @@ var default_time_to : float = 1.0
 var time_scale : float = 5.0
 var default_step_time : float = 1.0
 var character_control_counter : int = 0
+var buyer_seller_map : Dictionary = {}
 
 func get_time_to():
 	if time_scale == 0.0:
@@ -121,6 +122,7 @@ func _update_character_prices():
 			total = character_count - buyer_count
 		var amount : float = 100.0 * float(i) / float(total)
 		character.set_price_point(amount)
+		character.set_current_price_point(amount)
 		i += 1
 
 func _on_StartUpDelay_timeout():
@@ -144,10 +146,23 @@ func _on_SimulateStep_timeout():
 			var seller_count = character_count - buyer_count
 			var random_seller_i = randi() % seller_count + buyer_count
 			var random_seller = character_array[random_seller_i]
+			buyer_seller_map[current_character] = random_seller
 			var buy_position = get_buying_position(current_character, random_seller)
 			current_character.move_to(buy_position, get_time_to())
 		else:
+			if current_character in buyer_seller_map:
+				do_transaction(current_character, buyer_seller_map[current_character])
+				buyer_seller_map.erase(current_character)
 			current_character.go_home(get_time_to())
 	character_control_counter += 1
 	if character_control_counter >= get_buyer_count():
 		character_control_counter = 0
+
+func do_transaction(buyer : BaseCharacter, seller : BaseCharacter):
+	if buyer.current_price_point >= seller.current_price_point:
+		var avg : float = (buyer.current_price_point + seller.current_price_point) / 2.0
+		buyer.set_current_price_point(avg)
+		seller.set_current_price_point(avg)
+		return true
+	return false
+	
