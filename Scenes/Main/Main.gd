@@ -17,3 +17,6 @@ func _on_TwoCirclesButton_pressed():
 
 func _on_VSlider_value_changed(value : float):
 	world_2d.time_scale = value
+
+func _ready():
+	world_2d.time_scale = $TimeVSlider.value
