@@ -3,6 +3,10 @@ extends Node2D
 
 enum CharacterLayout{RANDOM, CIRCLE, DOUBLE_CIRCLE}
 
+onready var travel_phase = $PhaseManager/Travel
+onready var return_phase = $PhaseManager/Return
+onready var adjust_phase = $PhaseManager/Adjust
+
 var base_character_scene = preload("res://Scenes/Characters/BaseCharacter.tscn")
 var character_ratio : float = 0.5
 var character_count : int = 25
@@ -127,6 +131,7 @@ func _update_character_prices():
 
 func _on_StartUpDelay_timeout():
 	_update_character_positions()
+	$PhaseManager.advance()
 	$SimulateStep.start()
 
 func get_buying_position(buyer : BaseCharacter, seller : BaseCharacter, buy_distance : float = 50.0):
@@ -137,32 +142,74 @@ func get_buying_position(buyer : BaseCharacter, seller : BaseCharacter, buy_dist
 func _update_simulate_step_time():
 	$SimulateStep.wait_time = default_step_time / time_scale
 
-func _on_SimulateStep_timeout():
-	_update_simulate_step_time()
-	var current_character : BaseCharacter = character_array[character_control_counter]
-	if current_character.character_role == BaseCharacter.CharacterRoles.BUYER:
-		if current_character.is_home():
-			var buyer_count = get_buyer_count()
-			var seller_count = character_count - buyer_count
-			var random_seller_i = randi() % seller_count + buyer_count
-			var random_seller = character_array[random_seller_i]
-			buyer_seller_map[current_character] = random_seller
-			var buy_position = get_buying_position(current_character, random_seller)
-			current_character.move_to(buy_position, get_time_to())
-		else:
-			if current_character in buyer_seller_map:
-				do_transaction(current_character, buyer_seller_map[current_character])
-				buyer_seller_map.erase(current_character)
-			current_character.go_home(get_time_to())
+func _cycle_seller(seller : BaseCharacter):
+	if seller.character_role != BaseCharacter.CharacterRoles.SELLER:
+		print("%s not a seller." % str(seller))
+		return
+	match($PhaseManager.current_phase):
+		adjust_phase:
+			seller.adjust_current_price_point()
+
+func _increment_characters():
+	character_control_counter += 1
+	if character_control_counter >= character_count:
+		character_control_counter = 0
+		return true
+	return false
+
+func _increment_sellers_only():
 	character_control_counter += 1
 	if character_control_counter >= get_buyer_count():
 		character_control_counter = 0
+		return true
+	return false
 
 func do_transaction(buyer : BaseCharacter, seller : BaseCharacter):
 	if buyer.current_price_point >= seller.current_price_point:
 		var avg : float = (buyer.current_price_point + seller.current_price_point) / 2.0
-		buyer.set_current_price_point(avg)
-		seller.set_current_price_point(avg)
+		buyer.add_transaction(avg)
+		seller.add_transaction(avg)
 		return true
 	return false
-	
+
+func _next_travel_cycle():
+	var current_character : BaseCharacter = character_array[character_control_counter]
+	if current_character.character_role == BaseCharacter.CharacterRoles.BUYER:
+		var buyer_count = get_buyer_count()
+		var seller_count = character_count - buyer_count
+		var random_seller_i = randi() % seller_count + buyer_count
+		var random_seller = character_array[random_seller_i]
+		buyer_seller_map[current_character] = random_seller
+		var buy_position = get_buying_position(current_character, random_seller)
+		current_character.move_to(buy_position, get_time_to())
+	return _increment_sellers_only()
+
+func _next_return_cycle():
+	var current_character : BaseCharacter = character_array[character_control_counter]
+	if current_character.character_role == BaseCharacter.CharacterRoles.BUYER:
+		if current_character in buyer_seller_map:
+			do_transaction(current_character, buyer_seller_map[current_character])
+			buyer_seller_map.erase(current_character)
+		current_character.go_home(get_time_to())
+	return _increment_sellers_only()
+
+func _next_adjust_cycle():
+	var current_character : BaseCharacter = character_array[character_control_counter]
+	current_character.adjust_current_price_point()
+	return _increment_characters()
+
+func _next_step():
+	var advance_phase_flag : bool = false
+	match($PhaseManager.current_phase):
+		travel_phase:
+			advance_phase_flag = _next_travel_cycle()
+		return_phase:
+			advance_phase_flag = _next_return_cycle()
+		adjust_phase:
+			advance_phase_flag = _next_adjust_cycle()
+	if advance_phase_flag:
+		$PhaseManager.advance()
+
+func _on_SimulateStep_timeout():
+	_update_simulate_step_time()
+	_next_step()

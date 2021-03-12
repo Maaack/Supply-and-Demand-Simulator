@@ -13,6 +13,8 @@ buyer_color = Color( 0.976471, 0.615686, 0.0588235, 1 )
 seller_color = Color( 0.141176, 0.2, 0.67451, 1 )
 
 [node name="DoubleBarUI" parent="." instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -14.2544
 margin_top = -62.2226
 margin_right = -14.2544

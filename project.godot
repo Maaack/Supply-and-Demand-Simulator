@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "BasicBarUI",
 "language": "GDScript",
 "path": "res://Scenes/UI/BasicBar/BasicBarUI.gd"
+}, {
+"base": "Node",
+"class": "Phase",
+"language": "GDScript",
+"path": "res://Managers/Phase/Phase.gd"
+}, {
+"base": "Node",
+"class": "PhaseManager",
+"language": "GDScript",
+"path": "res://Managers/Phase/PhaseManager.gd"
 } ]
 _global_script_class_icons={
 "BaseCharacter": "",
-"BasicBarUI": ""
+"BasicBarUI": "",
+"Phase": "",
+"PhaseManager": ""
 }
 
 [application]

@@ -18,12 +18,12 @@ script = ExtResource( 2 )
 [node name="ProgressBar" parent="Node2D" index="0"]
 margin_left = 0.0
 margin_right = 164.0
-margin_bottom = 28.0
+margin_bottom = 14.0
 
 [node name="ProgressBar2" type="ProgressBar" parent="Node2D" index="1"]
-margin_top = 4.0
+margin_top = 16.0
 margin_right = 164.0
-margin_bottom = 24.0
+margin_bottom = 30.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 25.0

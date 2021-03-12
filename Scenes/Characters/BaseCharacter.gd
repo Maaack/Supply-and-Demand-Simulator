@@ -15,6 +15,7 @@ var character_role : int
 var price_point : float
 var current_price_point : float
 var home_position : Vector2
+var recent_transactions : Array = []
 
 func set_home(position : Vector2):
 	home_position = position
@@ -49,3 +50,23 @@ func move_to(new_position : Vector2, time_to : float = 1.0):
 func go_home(time_to : float = 1.0):
 	move_to(home_position, time_to)
 
+func add_transaction(avg : float = 0.0):
+	recent_transactions.append(avg)
+
+func get_avg_of_transactions():
+	var sum : float = 0.0
+	if recent_transactions.size() == 0:
+		return sum
+	for i in recent_transactions:
+		sum += i
+	return sum / recent_transactions.size()
+
+func get_lower_expectations():
+	return (price_point + current_price_point) / 2
+
+func adjust_current_price_point():
+	var avg = get_avg_of_transactions()
+	if avg == 0.0:
+		avg = get_lower_expectations()
+	set_current_price_point(avg)
+	recent_transactions.clear()
