@@ -1,7 +1,7 @@
 extends Node2D
 
 
-enum CharacterLayout{RANDOM, CIRCLE, DOUBLE_CIRCLE}
+enum CharacterLayout{CIRCLE, DOUBLE_CIRCLE}
 
 onready var travel_phase = $PhaseManager/Travel
 onready var return_phase = $PhaseManager/Return
@@ -12,7 +12,6 @@ var character_ratio : float = 0.5
 var character_count : int = 25
 var character_array : Array = []
 var character_layout_setting : int = CharacterLayout.CIRCLE
-var center_offset : Vector2 = Vector2(960, 520.0)
 var default_time_to : float = 1.0
 var time_scale : float = 1.0
 var default_step_time : float = 1.0
@@ -24,10 +23,6 @@ func get_time_to():
 		return
 	return default_time_to/time_scale
 
-func set_character_position_to_random(character : BaseCharacter):
-	var new_x : float = rand_range(100.0, 1820.0)
-	var new_y : float = rand_range(100.0, 980.0)
-	character.set_home(Vector2(new_x, new_y))
 
 func set_character_position_to_circle(character : BaseCharacter):
 	var radius : float = 400.0
@@ -35,7 +30,7 @@ func set_character_position_to_circle(character : BaseCharacter):
 	if character_index == -1:
 		return
 	var a : float = character_index * 2 * PI / character_count
-	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
+	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius
 	character.set_home(new_vector)
 
 func set_character_position_to_double_circle(character : BaseCharacter):
@@ -52,13 +47,12 @@ func set_character_position_to_double_circle(character : BaseCharacter):
 		character_delta = character_index - get_buyer_count()
 		role_count = character_count - buyer_count
 	var a : float = character_delta * 2 * PI / role_count
-	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius + center_offset
+	var new_vector : Vector2 = Vector2(sin(a), cos(a)) * radius
 	character.set_home(new_vector)
 
 func add_character():
 	var base_character_instance : BaseCharacter = base_character_scene.instance()
 	add_child(base_character_instance)
-	set_character_position_to_random(base_character_instance)
 	character_array.append(base_character_instance)
 	return base_character_instance
 
@@ -108,8 +102,6 @@ func update_layout(new_layout : int):
 func _update_character_positions():
 	for character in character_array:
 		match(character_layout_setting):
-			CharacterLayout.RANDOM:
-				set_character_position_to_random(character)
 			CharacterLayout.CIRCLE:
 				set_character_position_to_circle(character)
 			CharacterLayout.DOUBLE_CIRCLE:

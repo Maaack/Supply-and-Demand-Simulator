@@ -20,5 +20,8 @@ wait_time = 0.2
 [node name="Return" parent="PhaseManager" instance=ExtResource( 2 )]
 
 [node name="Adjust" parent="PhaseManager" instance=ExtResource( 2 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 [connection signal="timeout" from="StartUpDelay" to="." method="_on_StartUpDelay_timeout"]
 [connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]

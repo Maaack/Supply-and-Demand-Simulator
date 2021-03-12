@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/UI/BasicBar/DoubleBarUI/DoubleBarUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Sourced/Icons/character.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sourced/Icons/character_96x96.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Characters/BaseCharacter.gd" type="Script" id=3]
 
 [node name="BaseCharacter" type="Node2D"]
@@ -21,7 +21,6 @@ margin_right = -14.2544
 margin_bottom = -62.2226
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
