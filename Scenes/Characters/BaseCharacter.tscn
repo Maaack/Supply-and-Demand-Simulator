@@ -13,12 +13,13 @@ buyer_color = Color( 0.976471, 0.615686, 0.0588235, 1 )
 seller_color = Color( 0.141176, 0.2, 0.67451, 1 )
 
 [node name="DoubleBarUI" parent="." instance=ExtResource( 1 )]
+anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -14.2544
-margin_top = -62.2226
-margin_right = -14.2544
-margin_bottom = -62.2226
+margin_left = -14.973
+margin_top = -214.474
+margin_right = -14.973
+margin_bottom = -214.474
+rect_min_size = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

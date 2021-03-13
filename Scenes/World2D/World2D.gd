@@ -1,6 +1,8 @@
 extends Node2D
 
 
+signal character_created(character)
+
 enum CharacterLayout{CIRCLE, DOUBLE_CIRCLE}
 
 onready var travel_phase = $PhaseManager/Travel
@@ -22,7 +24,6 @@ func get_time_to():
 	if time_scale == 0.0:
 		return
 	return default_time_to/time_scale
-
 
 func set_character_position_to_circle(character : BaseCharacter):
 	var radius : float = 400.0
@@ -54,6 +55,7 @@ func add_character():
 	var base_character_instance : BaseCharacter = base_character_scene.instance()
 	add_child(base_character_instance)
 	character_array.append(base_character_instance)
+	emit_signal("character_created", base_character_instance)
 	return base_character_instance
 
 func get_buyer_count():
@@ -92,7 +94,6 @@ func _ready():
 			set_character_to_buyer(character)
 		else:
 			set_character_to_seller(character)
-	_update_character_prices()
 	$StartUpDelay.start()
 
 func update_layout(new_layout : int):
@@ -122,6 +123,7 @@ func _update_character_prices():
 		i += 1
 
 func _on_StartUpDelay_timeout():
+	_update_character_prices()
 	_update_character_positions()
 	$PhaseManager.advance()
 	$SimulateStep.start()

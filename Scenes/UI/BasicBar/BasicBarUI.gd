@@ -10,3 +10,6 @@ func set_base(base : float):
 
 func set_base_max(base_max : float):
 	progress_bar_node.max_value = base_max
+
+func set_color(color : Color):
+	modulate = color

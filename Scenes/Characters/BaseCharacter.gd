@@ -3,6 +3,10 @@ extends Node2D
 
 class_name BaseCharacter
 
+signal current_price_point_updated(price)
+signal price_point_updated(price)
+signal color_updated(color)
+
 enum CharacterRoles{BUYER, SELLER}
 
 onready var basic_bar_ui = $DoubleBarUI
@@ -29,17 +33,21 @@ func set_role(value : int):
 		CharacterRoles.BUYER:
 			sprite_node.modulate = buyer_color
 			basic_bar_ui.modulate = buyer_color
+			emit_signal("color_updated", buyer_color)
 		CharacterRoles.SELLER:
 			sprite_node.modulate = seller_color
 			basic_bar_ui.modulate = seller_color
+			emit_signal("color_updated", seller_color)
 
 func set_price_point(value : float):
 	price_point = value
 	basic_bar_ui.set_base(price_point)
+	emit_signal("price_point_updated", price_point)
 
 func set_current_price_point(value : float):
 	current_price_point = value
 	basic_bar_ui.set_current(current_price_point)
+	emit_signal("current_price_point_updated", current_price_point)
 
 func move_to(new_position : Vector2, time_to : float = 1.0):
 	if $Tween.is_active():

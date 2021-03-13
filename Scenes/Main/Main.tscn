@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/World2D/World2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/Graph/GraphUI.tscn" type="PackedScene" id=3]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -81,7 +82,9 @@ tick_count = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="ready" from="HSlider" to="." method="_on_HSlider_ready"]
+
+[node name="GraphUI" parent="." instance=ExtResource( 3 )]
+[connection signal="character_created" from="ViewportContainer/Viewport/World2D" to="." method="_on_World2D_character_created"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="OneCircleButton" to="." method="_on_OneCircleButton_pressed"]
 [connection signal="pressed" from="TwoCirclesButton" to="." method="_on_TwoCirclesButton_pressed"]

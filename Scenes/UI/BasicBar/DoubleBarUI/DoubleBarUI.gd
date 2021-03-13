@@ -1,6 +1,8 @@
 extends BasicBarUI
 
 
+class_name DoubleBarUI
+
 onready var progress_bar_2_node = $Node2D/ProgressBar2
 
 func set_current(current : float):

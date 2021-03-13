@@ -11,14 +11,18 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="BasicBarUI" type="Control"]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -164.0
+margin_right = 30.0
+rect_min_size = Vector2( 30, 164 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, 164 )
 rotation = -1.5708
 
 [node name="ProgressBar" type="ProgressBar" parent="Node2D"]

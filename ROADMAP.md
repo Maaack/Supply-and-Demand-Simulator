@@ -27,3 +27,10 @@
     * Transaction
     * Travel to home
     * Update
+
+
+### Sprint 3
+* Visualization
+    * Add graph
+        * Distribute character double bars across x-axis
+        * Update bars from characters
