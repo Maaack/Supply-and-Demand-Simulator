@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Characters3D/Character3D.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Originals/gltf/DudeWFloatingHead.glb" type="PackedScene" id=2]
+
+[node name="Character3D" type="Spatial"]
+script = ExtResource( 1 )
+buyer_color = Color( 0.164706, 0.329412, 0.898039, 1 )
+seller_color = Color( 0.94902, 0.713726, 0.262745, 1 )
+
+[node name="DudeWFloatingHead" parent="." instance=ExtResource( 2 )]
+transform = Transform( 80, 0, 0, 0, 80, 0, 0, 0, 80, 0, -0.35, 0 )
+
+[node name="Tween" type="Tween" parent="."]

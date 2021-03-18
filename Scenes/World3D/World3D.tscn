@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://Assets/Originals/gltf/CircularSurface.glb" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/World3D/World3D.gd" type="Script" id=3]
+[ext_resource path="res://Managers/Phase/PhaseManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Managers/Phase/Phase.tscn" type="PackedScene" id=5]
+
+[node name="World3D" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="CircularSurface" parent="." instance=ExtResource( 2 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -1.5, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.374607, 0.927184, 0, -0.927184, 0.374607, 0, 45, 17 )
+projection = 1
+current = true
+fov = 55.0
+size = 85.0
+near = 10.0
+far = 180.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.694658, 0.589249, -0.412596, 0, 0.573576, 0.819152, 0.71934, -0.569031, 0.39844, 0, 27.2472, 15.4867 )
+light_energy = 0.5
+shadow_enabled = true
+shadow_bias = 0.5
+
+[node name="StartUpDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="SimulateStep" type="Timer" parent="."]
+
+[node name="PhaseManager" parent="." instance=ExtResource( 4 )]
+
+[node name="Travel" parent="PhaseManager" instance=ExtResource( 5 )]
+
+[node name="Return" parent="PhaseManager" instance=ExtResource( 5 )]
+
+[node name="Adjust" parent="PhaseManager" instance=ExtResource( 5 )]
+[connection signal="timeout" from="StartUpDelay" to="." method="_on_StartUpDelay_timeout"]
+[connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]
