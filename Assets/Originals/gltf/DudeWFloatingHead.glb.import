@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/CircularSurface.glb-7cc75c6f6319419608088a92a75ac68d.scn"
+path="res://.import/DudeWFloatingHead.glb-21b3a229cb79277edcb9704690172716.scn"
 
 [deps]
 
-source_file="res://Assets/Originals/glTF_Separate/CircularSurface.glb"
-dest_files=[ "res://.import/CircularSurface.glb-7cc75c6f6319419608088a92a75ac68d.scn" ]
+source_file="res://Assets/Originals/gltf/DudeWFloatingHead.glb"
+dest_files=[ "res://.import/DudeWFloatingHead.glb-21b3a229cb79277edcb9704690172716.scn" ]
 
 [params]
 
