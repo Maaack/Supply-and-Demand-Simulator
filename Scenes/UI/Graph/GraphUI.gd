@@ -11,7 +11,7 @@ func _new_double_bar() -> DoubleBarUI:
 	$GridContainer.add_child(double_bar_instance)
 	return double_bar_instance
 
-func attach_character(character : BaseCharacter):
+func attach_character(character : Character3D):
 	var double_bar : DoubleBarUI= _new_double_bar()
 	character_graph_map[character] = double_bar
 	character.connect("current_price_point_updated", double_bar, "set_current")
