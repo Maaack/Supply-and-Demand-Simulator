@@ -5,8 +5,8 @@
 
 [node name="Character3D" type="Spatial"]
 script = ExtResource( 1 )
-buyer_color = Color( 0.164706, 0.329412, 0.898039, 1 )
-seller_color = Color( 0.94902, 0.713726, 0.262745, 1 )
+buyer_color = Color( 0.964706, 0.592157, 0.156863, 1 )
+seller_color = Color( 0.164706, 0.4, 0.898039, 1 )
 
 [node name="DudeWFloatingHead" parent="." instance=ExtResource( 2 )]
 transform = Transform( 80, 0, 0, 0, 80, 0, 0, 0, 80, 0, -0.35, 0 )

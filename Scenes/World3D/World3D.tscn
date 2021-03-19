@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://Scenes/World3D/WorldEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://Assets/Originals/gltf/CircularSurface.glb" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/World3D/World3D.gd" type="Script" id=3]
 [ext_resource path="res://Managers/Phase/PhaseManager.tscn" type="PackedScene" id=4]
@@ -10,7 +10,7 @@
 script = ExtResource( 3 )
 
 [node name="CircularSurface" parent="." instance=ExtResource( 2 )]
-transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -1.5, 0 )
+transform = Transform( 50, 0, 0, 0, 100, 0, 0, 0, 50, 0, -1.5, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
