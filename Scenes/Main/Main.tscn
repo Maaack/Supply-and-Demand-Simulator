@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 569.782 ],
+"_edit_horizontal_guides_": [ 1050.0 ],
 "_edit_use_anchors_": false
 }
 
@@ -22,7 +22,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1024, 600 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 render_target_update_mode = 3
 
