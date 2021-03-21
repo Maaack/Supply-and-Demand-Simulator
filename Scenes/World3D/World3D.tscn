@@ -10,7 +10,7 @@
 script = ExtResource( 3 )
 
 [node name="CircularSurface" parent="." instance=ExtResource( 2 )]
-transform = Transform( 50, 0, 0, 0, 100, 0, 0, 0, 50, 0, -1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -30,7 +30,12 @@ light_energy = 0.5
 shadow_enabled = true
 shadow_bias = 0.5
 
+[node name="SpawnDelay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="StartUpDelay" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="SimulateStep" type="Timer" parent="."]
@@ -42,5 +47,6 @@ one_shot = true
 [node name="Return" parent="PhaseManager" instance=ExtResource( 5 )]
 
 [node name="Adjust" parent="PhaseManager" instance=ExtResource( 5 )]
+[connection signal="timeout" from="SpawnDelay" to="." method="_on_SpawnDelay_timeout"]
 [connection signal="timeout" from="StartUpDelay" to="." method="_on_StartUpDelay_timeout"]
 [connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]

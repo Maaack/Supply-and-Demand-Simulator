@@ -25,28 +25,16 @@ func set_home(position : Vector3):
 func is_home():
 	return home_position == translation
 
-func set_color(color : Color):
-	if not is_instance_valid($DudeWFloatingHead/Body001):
-		return
-	var material = $DudeWFloatingHead/Body001.mesh.surface_get_material(0)
-	material = material.duplicate()
-	if material is SpatialMaterial:
-		material.albedo_color = color
-	$DudeWFloatingHead/Body001.set_surface_material(0, material)
-	material = $DudeWFloatingHead/Sphere001.mesh.surface_get_material(0)
-	material = material.duplicate()
-	if material is SpatialMaterial:
-		material.albedo_color = color
-	$DudeWFloatingHead/Sphere001.set_surface_material(0, material)
-
 func set_role(value : int):
 	character_role = value
 	match character_role:
 		CharacterRoles.BUYER:
-			set_color(buyer_color)
+			$SellerCharacter.visible = false
+			$BuyerCharacter.visible = true
 			emit_signal("color_updated", buyer_color)
 		CharacterRoles.SELLER:
-			set_color(seller_color)
+			$BuyerCharacter.visible = false
+			$SellerCharacter.visible = true
 			emit_signal("color_updated", seller_color)
 
 func set_price_point(value : float):

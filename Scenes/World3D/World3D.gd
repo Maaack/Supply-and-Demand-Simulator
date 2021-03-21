@@ -9,7 +9,7 @@ onready var travel_phase = $PhaseManager/Travel
 onready var return_phase = $PhaseManager/Return
 onready var adjust_phase = $PhaseManager/Adjust
 
-var peepol_scene = preload("res://Scenes/Characters3D/Character3D.tscn")
+var character_scene = preload("res://Scenes/Characters3D/Character3D.tscn")
 var character_ratio : float = 0.5
 var character_count : int = 25
 var character_array : Array = []
@@ -52,11 +52,11 @@ func set_character_position_to_double_circle(character):
 	character.set_home(new_vector)
 
 func add_character():
-	var peepol_instance = peepol_scene.instance()
-	add_child(peepol_instance)
-	character_array.append(peepol_instance)
-	emit_signal("character_created", peepol_instance)
-	return peepol_instance
+	var character_instance = character_scene.instance()
+	add_child(character_instance)
+	character_array.append(character_instance)
+	emit_signal("character_created", character_instance)
+	return character_instance
 
 func get_buyer_count():
 	return int(round(character_count * character_ratio))
@@ -88,12 +88,7 @@ func update_ratio(value : float):
 
 func _ready():
 	randomize()
-	for i in range(character_count):
-		var character = add_character()
-		if i < get_buyer_count():
-			set_character_to_buyer(character)
-		else:
-			set_character_to_seller(character)
+	$SpawnDelay.start()
 	$StartUpDelay.start()
 
 func update_layout(new_layout : int):
@@ -201,3 +196,13 @@ func _next_step():
 func _on_SimulateStep_timeout():
 	_update_simulate_step_time()
 	_next_step()
+
+func _on_SpawnDelay_timeout():
+	var character = add_character()
+	if character_array.size() <= get_buyer_count():
+		set_character_to_buyer(character)
+	else:
+		set_character_to_seller(character)
+	_update_character_positions()
+	if character_array.size() < character_count:
+		$SpawnDelay.start()
