@@ -139,7 +139,7 @@ func _increment_characters():
 		return true
 	return false
 
-func _increment_sellers_only():
+func _increment_buyers_only():
 	character_control_counter += 1
 	if character_control_counter >= get_buyer_count():
 		character_control_counter = 0
@@ -164,7 +164,7 @@ func _next_travel_cycle():
 		buyer_seller_map[current_character] = random_seller
 		var buy_position = get_buying_position(current_character, random_seller)
 		current_character.move_to(buy_position, get_time_to())
-	return _increment_sellers_only()
+	return _increment_buyers_only()
 
 func _next_return_cycle():
 	var current_character : Character3D = character_array[character_control_counter]
@@ -173,7 +173,7 @@ func _next_return_cycle():
 			do_transaction(current_character, buyer_seller_map[current_character])
 			buyer_seller_map.erase(current_character)
 		current_character.go_home(get_time_to())
-	return _increment_sellers_only()
+	return _increment_buyers_only()
 
 func _next_adjust_cycle():
 	var current_character : Character3D = character_array[character_control_counter]
