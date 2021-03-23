@@ -11,7 +11,7 @@ onready var adjust_phase = $PhaseManager/Adjust
 
 var character_scene = preload("res://Scenes/Characters3D/Character3D.tscn")
 var character_ratio : float = 0.5
-var character_count : int = 25
+var target_character_count : int = 25
 var character_array : Array = []
 var character_layout_setting : int = CharacterLayout.CIRCLE
 var default_time_to : float = 1.0
@@ -30,7 +30,7 @@ func set_character_position_to_circle(character : Character3D):
 	var character_index = character_array.find(character)
 	if character_index == -1:
 		return
-	var a : float = character_index * 2 * PI / character_count
+	var a : float = character_index * 2 * PI / target_character_count
 	var new_vector : Vector3 = Vector3(sin(a), 0, cos(a)) * radius 
 	character.set_home(new_vector)
 
@@ -40,47 +40,62 @@ func set_character_position_to_double_circle(character):
 	var character_index = character_array.find(character)
 	if character_index == -1:
 		return
-	var buyer_count = get_buyer_count()
+	var buyer_count = get_target_buyer_count()
 	var character_delta = character_index
 	var role_count = buyer_count
 	if character_index >= buyer_count:
 		radius = radius_outer
-		character_delta = character_index - get_buyer_count()
-		role_count = character_count - buyer_count
+		character_delta = character_index - get_target_buyer_count()
+		role_count = target_character_count - buyer_count
 	var a : float = character_delta * 2 * PI / role_count
 	var new_vector : Vector3 = Vector3(sin(a), 0, cos(a)) * radius
 	character.set_home(new_vector)
 
-func add_character():
+func _add_character():
 	var character_instance = character_scene.instance()
 	add_child(character_instance)
 	character_array.append(character_instance)
 	emit_signal("character_created", character_instance)
 	return character_instance
 
-func get_buyer_count():
-	return int(round(character_count * character_ratio))
-
-func set_character_to_buyer(character : Character3D):
+func add_buyer():
+	var character = _add_character()
 	character.set_role(Character3D.CharacterRoles.BUYER)
+	return character
 
-func set_character_to_seller(character : Character3D):
+func add_seller():
+	var character = _add_character()
 	character.set_role(Character3D.CharacterRoles.SELLER)
-	
+	return character
+
+func get_target_buyer_count():
+	return int(round(target_character_count * character_ratio))
+
+func get_buyer_count():
+	return int(round(character_array.size() * character_ratio))
+
+func add_character():
+	var character : Character3D
+	if character_array.size() < get_target_buyer_count():
+		character = add_buyer()
+	else:
+		character = add_seller()
+	_update_character_positions()
+
 func update_ratio(value : float):
-	var prior_count : int = get_buyer_count()
+	var prior_count : int = get_target_buyer_count()
 	character_ratio = value
-	var current_count : int = get_buyer_count()
+	var current_count : int = get_target_buyer_count()
 	if current_count > prior_count:
 		for i in range(prior_count, current_count):
 			var current_character : Character3D = character_array[i]
 			if is_instance_valid(current_character):
-				set_character_to_buyer(current_character)
+				current_character.set_role(Character3D.CharacterRoles.BUYER)
 	elif current_count < prior_count:
 		for i in range(current_count, prior_count):
 			var current_character : Character3D = character_array[i]
 			if is_instance_valid(current_character):
-				set_character_to_seller(current_character)
+				current_character.set_role(Character3D.CharacterRoles.SELLER)
 	if prior_count != current_count:
 		_update_character_prices()
 		if character_layout_setting == CharacterLayout.DOUBLE_CIRCLE:
@@ -111,7 +126,7 @@ func _update_character_prices():
 	for character in character_array:
 		if i >= total:
 			i -= buyer_count
-			total = character_count - buyer_count
+			total = character_array.size() - buyer_count
 		var amount : float = 100.0 * float(i) / float(total)
 		character.set_price_point(amount)
 		character.set_current_price_point(amount)
@@ -131,10 +146,9 @@ func get_buying_position(buyer : Character3D, seller : Character3D, buy_distance
 func _update_simulate_step_time():
 	$SimulateStep.wait_time = default_step_time / time_scale
 
-
 func _increment_characters():
 	character_control_counter += 1
-	if character_control_counter >= character_count:
+	if character_control_counter >= character_array.size():
 		character_control_counter = 0
 		return true
 	return false
@@ -158,7 +172,9 @@ func _next_travel_cycle():
 	var current_character : Character3D = character_array[character_control_counter]
 	if current_character.character_role == Character3D.CharacterRoles.BUYER:
 		var buyer_count = get_buyer_count()
-		var seller_count = character_count - buyer_count
+		var seller_count = character_array.size() - buyer_count
+		if seller_count == 0:
+			return false
 		var random_seller_i = randi() % seller_count + buyer_count
 		var random_seller = character_array[random_seller_i]
 		buyer_seller_map[current_character] = random_seller
@@ -180,7 +196,6 @@ func _next_adjust_cycle():
 	current_character.adjust_current_price_point()
 	return _increment_characters()
 
-
 func _next_step():
 	var advance_phase_flag : bool = false
 	match($PhaseManager.current_phase):
@@ -198,11 +213,6 @@ func _on_SimulateStep_timeout():
 	_next_step()
 
 func _on_SpawnDelay_timeout():
-	var character = add_character()
-	if character_array.size() <= get_buyer_count():
-		set_character_to_buyer(character)
-	else:
-		set_character_to_seller(character)
-	_update_character_positions()
-	if character_array.size() < character_count:
+	add_character()
+	if character_array.size() < target_character_count:
 		$SpawnDelay.start()
