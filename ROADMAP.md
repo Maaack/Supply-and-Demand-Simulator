@@ -34,3 +34,16 @@
     * Add graph
         * Distribute character double bars across x-axis
         * Update bars from characters
+
+### Sprint 4
+* 2D to 3D
+    * World
+    * Characters
+    
+### Sprint 5
+* Start Menu
+    * Select starting character count
+    * Select ratio
+* 2D to 3D
+    * Graphs over Characters
+    * Graph Scene

@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Themes/RegularFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 0.92549 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+default_font = ExtResource( 1 )
+Panel/styles/panel = SubResource( 1 )
