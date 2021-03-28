@@ -103,8 +103,6 @@ func update_ratio(value : float):
 
 func _ready():
 	randomize()
-	$SpawnDelay.start()
-	$StartUpDelay.start()
 
 func update_layout(new_layout : int):
 	character_layout_setting = new_layout
@@ -131,12 +129,6 @@ func _update_character_prices():
 		character.set_price_point(amount)
 		character.set_current_price_point(amount)
 		i += 1
-
-func _on_StartUpDelay_timeout():
-	_update_character_prices()
-	_update_character_positions()
-	$PhaseManager.advance()
-	$SimulateStep.start()
 
 func get_buying_position(buyer : Character3D, seller : Character3D, buy_distance : float = 5.0):
 	var delta_vector : Vector3 = seller.translation - buyer.translation
@@ -208,6 +200,12 @@ func _next_step():
 	if advance_phase_flag:
 		$PhaseManager.advance()
 
+func start_sim_phases():
+	_update_character_prices()
+	_update_character_positions()
+	$PhaseManager.advance()
+	$SimulateStep.start()
+
 func _on_SimulateStep_timeout():
 	_update_simulate_step_time()
 	_next_step()
@@ -216,3 +214,8 @@ func _on_SpawnDelay_timeout():
 	add_character()
 	if character_array.size() < target_character_count:
 		$SpawnDelay.start()
+	else:
+		start_sim_phases()
+
+func start_sim():
+	$SpawnDelay.start()

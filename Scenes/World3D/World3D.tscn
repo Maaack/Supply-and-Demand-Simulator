@@ -34,10 +34,6 @@ shadow_bias = 0.5
 wait_time = 0.1
 one_shot = true
 
-[node name="StartUpDelay" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="SimulateStep" type="Timer" parent="."]
 
 [node name="PhaseManager" parent="." instance=ExtResource( 4 )]
@@ -48,5 +44,4 @@ one_shot = true
 
 [node name="Adjust" parent="PhaseManager" instance=ExtResource( 5 )]
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_SpawnDelay_timeout"]
-[connection signal="timeout" from="StartUpDelay" to="." method="_on_StartUpDelay_timeout"]
 [connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/StartPanel/StartPanel.gd" type="Script" id=1]
+
+[node name="StartPanel" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 150.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterCountControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterCountLabel" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -179.857
+margin_top = -79.4391
+margin_right = -50.8572
+margin_bottom = -56.4391
+text = "Character Count:"
+
+[node name="CharacterCountHSlider" type="HSlider" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -34.7605
+margin_top = 89.4027
+margin_right = 175.24
+margin_bottom = 109.403
+max_value = 4.0
+value = 2.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="N6Label" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.2615
+margin_top = -81.4589
+margin_right = -16.2618
+margin_bottom = -58.4589
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="N12Label" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.7382
+margin_top = -81.4589
+margin_right = 30.7382
+margin_bottom = -58.4589
+text = "12"
+
+[node name="N25Label" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 61.7382
+margin_top = -81.4589
+margin_right = 79.7382
+margin_bottom = -58.4589
+text = "25"
+
+[node name="N50Label" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 109.738
+margin_top = -81.4589
+margin_right = 127.738
+margin_bottom = -58.4589
+text = "50"
+
+[node name="N100Label" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 155.738
+margin_top = -81.4589
+margin_right = 182.738
+margin_bottom = -58.4589
+text = "100"
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -52.0
+margin_right = 53.0
+margin_bottom = -20.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="CharacterCountControl/CharacterCountHSlider" to="." method="_on_CharacterCountHSlider_value_changed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
