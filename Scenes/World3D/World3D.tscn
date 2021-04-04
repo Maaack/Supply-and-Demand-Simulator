@@ -26,9 +26,7 @@ far = 180.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.694658, 0.589249, -0.412596, 0, 0.573576, 0.819152, 0.71934, -0.569031, 0.39844, 0, 27.2472, 15.4867 )
-light_energy = 0.5
 shadow_enabled = true
-shadow_bias = 0.5
 
 [node name="SpawnDelay" type="Timer" parent="."]
 wait_time = 0.1
