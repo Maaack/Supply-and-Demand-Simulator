@@ -44,6 +44,8 @@
 * Start Menu
     * Select starting character count
     * Select ratio
+    
+### Sprint 6
 * 2D to 3D
     * Graphs over Characters
     * Graph Scene
