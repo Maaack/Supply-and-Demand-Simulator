@@ -8,6 +8,6 @@ panorama = SubResource( 1 )
 [resource]
 background_mode = 1
 background_sky = SubResource( 2 )
-background_color = Color( 0.733333, 0.666667, 0.866667, 1 )
+background_color = Color( 0.682353, 0.682353, 0.682353, 1 )
 ambient_light_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 ambient_light_energy = 0.45

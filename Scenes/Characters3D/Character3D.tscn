@@ -1,19 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Characters3D/Character3D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Originals/gltf/SellerCharacter.glb" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Originals/gltf/BuyerCharacter.glb" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Originals/gltf/StatsArrows.glb" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Originals/gltf/StatsBar.glb" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Originals/gltf/StatsBase.glb" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Originals/gltf/StatsBarTop.glb" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Originals/gltf/Apple.glb" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Originals/gltf/Coins.glb" type="PackedScene" id=9]
 
 [node name="Character3D" type="Spatial"]
 script = ExtResource( 1 )
 buyer_color = Color( 0.964706, 0.592157, 0.156863, 1 )
 seller_color = Color( 0.164706, 0.4, 0.898039, 1 )
 
+[node name="StatsArrows2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 7.04409, 0 )
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SellerCharacter" parent="." instance=ExtResource( 2 )]
-transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19014, 0 )
 visible = false
 
 [node name="BuyerCharacter" parent="." instance=ExtResource( 3 )]
-transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19014, 0 )
+
+[node name="StatsBase" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.74962, 0 )
+
+[node name="StatsBar" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.93425, 0 )
+
+[node name="StatsBarTop" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.93412, 0 )
+
+[node name="StatsArrows" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69773, 0 )
+
+[node name="Apple" parent="." instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 10.6927, 0 )
+
+[node name="Coins" parent="." instance=ExtResource( 9 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.30631, 0 )
