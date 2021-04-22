@@ -113,6 +113,7 @@ text = "Economy Sim"
 align = 1
 
 [node name="StartPanel" parent="StartUI" instance=ExtResource( 6 )]
+
 [connection signal="character_created" from="ViewportContainer/Viewport/World3D" to="." method="_on_World3D_character_created"]
 [connection signal="value_changed" from="Control/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Control/OneCircleButton" to="." method="_on_OneCircleButton_pressed"]
