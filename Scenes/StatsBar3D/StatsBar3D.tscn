@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Originals/gltf/StatsBarTop.glb" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Originals/gltf/StatsBar.glb" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/StatsBar3D/StatsBar3D.gd" type="Script" id=3]
 
-[node name="StatsBar" type="Spatial"]
+[node name="StatsBar3D" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="StatsBarSpatial" type="Spatial" parent="."]
+
+[node name="StatsBar" parent="StatsBarSpatial" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0 )
 
 [node name="StatsBarTop" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, 6.9, 0 )
-
-[node name="StatsBar" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, 5.9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81531, 0 )

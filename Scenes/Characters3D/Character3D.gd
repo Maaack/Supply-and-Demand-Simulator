@@ -36,14 +36,18 @@ func set_role(value : int):
 			$BuyerCharacter.visible = false
 			$SellerCharacter.visible = true
 			emit_signal("color_updated", seller_color)
+	$StatsBar3D1.set_role(character_role)
+	$StatsBar3D2.set_role(character_role)
 
 func set_price_point(value : float):
 	price_point = value
+	$StatsBar3D1.current_value = value
 	reset_history()
 	emit_signal("price_point_updated", price_point)
 
 func set_current_price_point(value : float):
 	current_price_point = value
+	$StatsBar3D2.current_value = value
 	emit_signal("current_price_point_updated", current_price_point)
 
 func move_to(new_translation : Vector3, time_to : float = 1.0):
@@ -90,3 +94,6 @@ func reset_history():
 	all_transactions.clear()
 	recent_transactions.clear()
 	current_price_point = price_point
+
+func _ready():
+	$StatsBar3D1.set_type($StatsBar3D1.StatsType.METAL)
