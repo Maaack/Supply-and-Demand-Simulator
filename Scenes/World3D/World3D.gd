@@ -96,6 +96,7 @@ func update_ratio(value : float):
 			var current_character : Character3D = character_array[i]
 			if is_instance_valid(current_character):
 				current_character.set_role(Character3D.CharacterRoles.SELLER)
+				_update_character_position(current_character)
 	if prior_count != current_count:
 		_update_character_prices()
 		if character_layout_setting == CharacterLayout.DOUBLE_CIRCLE:
@@ -108,14 +109,18 @@ func update_layout(new_layout : int):
 	character_layout_setting = new_layout
 	_update_character_positions()
 
+func _update_character_position(character):
+	match(character_layout_setting):
+		CharacterLayout.CIRCLE:
+			set_character_position_to_circle(character)
+		CharacterLayout.DOUBLE_CIRCLE:
+			set_character_position_to_double_circle(character)
+	character.go_home(get_time_to())
+	
+
 func _update_character_positions():
 	for character in character_array:
-		match(character_layout_setting):
-			CharacterLayout.CIRCLE:
-				set_character_position_to_circle(character)
-			CharacterLayout.DOUBLE_CIRCLE:
-				set_character_position_to_double_circle(character)
-		character.go_home(get_time_to())
+		_update_character_position(character)
 
 func _update_character_prices():
 	var buyer_count : int = get_buyer_count()

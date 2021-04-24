@@ -44,7 +44,6 @@ func set_type(value : int):
 	update_material()
 
 func set_value(value : float):
-	print(value)
 	if current_value != value:
 		current_value = value
 		var scale_ratio = current_value / max_value
