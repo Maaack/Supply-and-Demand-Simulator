@@ -24,7 +24,8 @@ func _ready():
 	set_target_character_count($StartUI/StartPanel.character_count)
 
 func _on_World3D_character_created(character):
-	$GraphUI.attach_character(character)
+#	$GraphUI.attach_character(character)
+	$ViewportContainer2/Viewport/GraphWorld.attach_character(character)
 
 func _on_StartPanel_count_updated(value : float):
 	set_target_character_count(value)

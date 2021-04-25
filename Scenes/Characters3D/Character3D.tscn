@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Originals/gltf/SellerCharacter.glb" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Originals/gltf/BuyerCharacter.glb" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Originals/gltf/StatsArrows.glb" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/StatsBar3D/StatsBar3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/StatsBar3D/DoubleStatsBar3D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Originals/gltf/StatsBase.glb" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Characters3D/Characters3DReceiveItem.tres" type="Animation" id=7]
 [ext_resource path="res://Assets/Originals/gltf/Apple.glb" type="PackedScene" id=8]
@@ -31,11 +31,8 @@ visible = false
 [node name="StatsBase" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.74962, 0 )
 
-[node name="StatsBar3D1" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44, 4.872, 0 )
-
-[node name="StatsBar3D2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, 4.872, 0 )
+[node name="DoubleStatsBar3D" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88, 0 )
 
 [node name="ItemControl" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )

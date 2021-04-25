@@ -5,7 +5,7 @@ class_name Character3D
 
 signal current_price_point_updated(price)
 signal price_point_updated(price)
-signal color_updated(color)
+signal role_updated(role)
 
 enum CharacterRoles{BUYER, SELLER}
 enum ItemTypes{APPLE, COINS}
@@ -39,23 +39,22 @@ func set_role(value : int):
 		CharacterRoles.BUYER:
 			$SellerCharacter.visible = false
 			$BuyerCharacter.visible = true
-			emit_signal("color_updated", buyer_color)
 		CharacterRoles.SELLER:
 			$BuyerCharacter.visible = false
 			$SellerCharacter.visible = true
-			emit_signal("color_updated", seller_color)
-	$StatsBar3D1.set_role(character_role)
-	$StatsBar3D2.set_role(character_role)
+	emit_signal("role_updated", character_role)
+	$DoubleStatsBar3D/StatsBar3D1.set_role(character_role)
+	$DoubleStatsBar3D/StatsBar3D2.set_role(character_role)
 
 func set_price_point(value : float):
 	price_point = value
-	$StatsBar3D1.current_value = value
+	$DoubleStatsBar3D/StatsBar3D1.current_value = value
 	reset_history()
 	emit_signal("price_point_updated", price_point)
 
 func set_current_price_point(value : float):
 	current_price_point = value
-	$StatsBar3D2.current_value = value
+	$DoubleStatsBar3D/StatsBar3D2.current_value = value
 	emit_signal("current_price_point_updated", current_price_point)
 
 func get_angle_on_y_axis(translation_to_face : Vector3):
@@ -128,6 +127,3 @@ func reset_history():
 	all_transactions.clear()
 	recent_transactions.clear()
 	current_price_point = price_point
-
-func _ready():
-	$StatsBar3D1.set_type($StatsBar3D1.StatsType.METAL)
