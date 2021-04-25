@@ -6,6 +6,7 @@ signal character_created(character)
 enum CharacterLayout{CIRCLE, DOUBLE_CIRCLE}
 
 onready var travel_phase = $PhaseManager/Travel
+onready var trade_phase = $PhaseManager/Trade
 onready var return_phase = $PhaseManager/Return
 onready var adjust_phase = $PhaseManager/Adjust
 
@@ -19,6 +20,7 @@ var time_scale : float = 1.0
 var default_step_time : float = 1.0
 var character_control_counter : int = 0
 var buyer_seller_map : Dictionary = {}
+var seller_return_map : Dictionary = {}
 
 func get_time_to():
 	if time_scale == 0.0:
@@ -162,6 +164,8 @@ func do_transaction(buyer : Character3D, seller : Character3D):
 		var avg : float = (buyer.current_price_point + seller.current_price_point) / 2.0
 		buyer.add_transaction(avg)
 		seller.add_transaction(avg)
+		buyer.add_item(Character3D.ItemTypes.APPLE)
+		seller.add_item(Character3D.ItemTypes.COINS)
 		return true
 	return false
 
@@ -179,12 +183,17 @@ func _next_travel_cycle():
 		current_character.move_to(buy_position, get_time_to())
 	return _increment_buyers_only()
 
-func _next_return_cycle():
+func _next_trade_cycle():
 	var current_character : Character3D = character_array[character_control_counter]
 	if current_character.character_role == Character3D.CharacterRoles.BUYER:
 		if current_character in buyer_seller_map:
 			do_transaction(current_character, buyer_seller_map[current_character])
 			buyer_seller_map.erase(current_character)
+	return _increment_buyers_only()
+
+func _next_return_cycle():
+	var current_character : Character3D = character_array[character_control_counter]
+	if current_character.character_role == Character3D.CharacterRoles.BUYER:
 		current_character.go_home(get_time_to())
 	return _increment_buyers_only()
 
@@ -198,6 +207,8 @@ func _next_step():
 	match($PhaseManager.current_phase):
 		travel_phase:
 			advance_phase_flag = _next_travel_cycle()
+		trade_phase:
+			advance_phase_flag = _next_trade_cycle()
 		return_phase:
 			advance_phase_flag = _next_return_cycle()
 		adjust_phase:

@@ -40,6 +40,8 @@ one_shot = true
 
 [node name="Travel" parent="PhaseManager" instance=ExtResource( 5 )]
 
+[node name="Trade" parent="PhaseManager" instance=ExtResource( 5 )]
+
 [node name="Return" parent="PhaseManager" instance=ExtResource( 5 )]
 
 [node name="Adjust" parent="PhaseManager" instance=ExtResource( 5 )]

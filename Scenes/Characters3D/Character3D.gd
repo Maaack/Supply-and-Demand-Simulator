@@ -8,6 +8,7 @@ signal price_point_updated(price)
 signal color_updated(color)
 
 enum CharacterRoles{BUYER, SELLER}
+enum ItemTypes{APPLE, COINS}
 
 export var buyer_color : Color
 export var seller_color : Color
@@ -81,6 +82,16 @@ func move_to(new_translation : Vector3, time_to : float = 1.0):
 
 func go_home(time_to : float = 1.0):
 	move_to(home_position, time_to)
+
+func add_item(item_type : int):
+	match(item_type):
+		ItemTypes.APPLE:
+			$ItemControl/Apple.visible = true
+			$ItemControl/Coins.visible = false
+		ItemTypes.COINS:
+			$ItemControl/Apple.visible = false
+			$ItemControl/Coins.visible = true
+	$AnimationPlayer.play("ReceiveItem")
 
 func add_transaction(avg : float = 0.0):
 	recent_transactions.append(avg)

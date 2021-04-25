@@ -43,9 +43,16 @@
 ### Sprint 5
 * Start Menu
     * Select starting character count
-    * Select ratio
     
 ### Sprint 6
 * 2D to 3D
     * Graphs over Characters
+
+## Sprint 7
+* Start Menu
+    * Select ratio
+* 2D to 3D
     * Graph Scene
+* Animations
+    * Seller's get Coins
+    * Buyer's get Apple
