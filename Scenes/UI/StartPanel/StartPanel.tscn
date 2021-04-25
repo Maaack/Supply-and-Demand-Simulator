@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/UI/StartPanel/StartPanel.gd" type="Script" id=1]
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=2]
 
 [node name="StartPanel" type="Panel"]
 anchor_left = 0.5
@@ -10,7 +11,8 @@ anchor_bottom = 0.5
 margin_left = -200.0
 margin_top = -150.0
 margin_right = 200.0
-margin_bottom = 150.0
+margin_bottom = 294.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,84 +27,178 @@ __meta__ = {
 
 [node name="CharacterCountLabel" type="Label" parent="CharacterCountControl"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -179.857
-margin_top = -79.4391
-margin_right = -50.8572
-margin_bottom = -56.4391
+margin_left = -164.357
+margin_top = 44.0609
+margin_right = -7.35699
+margin_bottom = 72.0609
 text = "Character Count:"
-
-[node name="CharacterCountHSlider" type="HSlider" parent="CharacterCountControl"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -34.7605
-margin_top = 89.4027
-margin_right = 175.24
-margin_bottom = 109.403
-max_value = 4.0
-value = 2.0
-tick_count = 5
-ticks_on_borders = true
-
-[node name="N6Label" type="Label" parent="CharacterCountControl"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.2615
-margin_top = -81.4589
-margin_right = -16.2618
-margin_bottom = -58.4589
-text = "6"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="N12Label" type="Label" parent="CharacterCountControl"]
-anchor_left = 0.5
+[node name="SpinBox" type="SpinBox" parent="CharacterCountControl/CharacterCountLabel"]
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 12.7382
-margin_top = -81.4589
-margin_right = 30.7382
-margin_bottom = -58.4589
-text = "12"
+margin_left = 60.357
+margin_top = -18.0
+margin_right = 173.357
+margin_bottom = 20.0
+min_value = 2.0
+value = 2.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="N25Label" type="Label" parent="CharacterCountControl"]
+[node name="MinBuyerPriceLabel" type="Label" parent="CharacterCountControl"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 61.7382
-margin_top = -81.4589
-margin_right = 79.7382
-margin_bottom = -58.4589
-text = "25"
+margin_left = -164.357
+margin_top = 93.0609
+margin_right = -7.35699
+margin_bottom = 121.061
+text = "Min Buyer Price:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="N50Label" type="Label" parent="CharacterCountControl"]
-anchor_left = 0.5
+[node name="SpinBox" type="SpinBox" parent="CharacterCountControl/MinBuyerPriceLabel"]
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 109.738
-margin_top = -81.4589
-margin_right = 127.738
-margin_bottom = -58.4589
-text = "50"
+margin_left = 60.357
+margin_top = -18.0
+margin_right = 173.357
+margin_bottom = 20.0
+align = 2
 
-[node name="N100Label" type="Label" parent="CharacterCountControl"]
+[node name="Label" type="Label" parent="CharacterCountControl/MinBuyerPriceLabel"]
+margin_left = 332.357
+margin_top = 2.0
+margin_right = 372.357
+margin_bottom = 30.0
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxBuyerPriceLabel" type="Label" parent="CharacterCountControl"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
+margin_left = -164.357
+margin_top = 141.061
+margin_right = -7.35699
+margin_bottom = 169.061
+text = "Max Buyer Price:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="CharacterCountControl/MaxBuyerPriceLabel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 155.738
-margin_top = -81.4589
-margin_right = 182.738
-margin_bottom = -58.4589
-text = "100"
+margin_left = 60.357
+margin_top = -18.0
+margin_right = 173.357
+margin_bottom = 20.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CharacterCountControl/MaxBuyerPriceLabel"]
+margin_left = 332.357
+margin_top = 2.0
+margin_right = 372.357
+margin_bottom = 30.0
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinSellerPriceLabel" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -164.0
+margin_top = 189.0
+margin_right = -7.0
+margin_bottom = 217.0
+text = "Min Seller Price:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="CharacterCountControl/MinSellerPriceLabel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 60.357
+margin_top = -18.0
+margin_right = 173.357
+margin_bottom = 20.0
+align = 2
+
+[node name="Label" type="Label" parent="CharacterCountControl/MinSellerPriceLabel"]
+margin_left = 332.357
+margin_top = 2.0
+margin_right = 372.357
+margin_bottom = 30.0
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxSellerPriceLabel" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -164.0
+margin_top = 238.0
+margin_right = -7.0
+margin_bottom = 266.0
+text = "Max Seller Price:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="CharacterCountControl/MaxSellerPriceLabel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 60.357
+margin_top = -18.0
+margin_right = 173.357
+margin_bottom = 20.0
+align = 2
+
+[node name="Label" type="Label" parent="CharacterCountControl/MaxSellerPriceLabel"]
+margin_left = 332.357
+margin_top = 2.0
+margin_right = 372.357
+margin_bottom = 30.0
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarningLabel" type="Label" parent="CharacterCountControl"]
+visible = false
+margin_left = 58.0
+margin_top = 304.0
+margin_right = 356.0
+margin_bottom = 332.0
+custom_colors/font_color = Color( 1, 0.0196078, 0.133333, 1 )
+text = "Warning: Values must be 0 - 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -117,5 +213,5 @@ text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="CharacterCountControl/CharacterCountHSlider" to="." method="_on_CharacterCountHSlider_value_changed"]
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
