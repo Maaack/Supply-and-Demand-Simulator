@@ -188,6 +188,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BuyerSellerRatioLabel" type="Label" parent="CharacterCountControl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -87.0
+margin_top = 285.0
+margin_right = 92.0
+margin_bottom = 313.0
+text = "Buyer / Seller Ratio:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="CharacterCountControl/BuyerSellerRatioLabel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 26.0
+value = 50.0
+
 [node name="WarningLabel" type="Label" parent="CharacterCountControl"]
 visible = false
 margin_left = 58.0

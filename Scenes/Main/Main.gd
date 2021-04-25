@@ -35,6 +35,7 @@ func _on_StartPanel_start_button_pressed():
 	world_3d.buyer_lowest_price = $StartUI/StartPanel.buyer_lowest_price
 	world_3d.seller_highest_price = $StartUI/StartPanel.seller_highest_price
 	world_3d.seller_lowest_price = $StartUI/StartPanel.seller_lowest_price
+	world_3d.character_ratio = $StartUI/StartPanel.character_ratio
 	world_3d.start_sim()
 	$StartUI.hide()
 	$Control.show()

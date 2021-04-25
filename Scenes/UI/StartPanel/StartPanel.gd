@@ -17,6 +17,7 @@ func init_values():
 	$CharacterCountControl/MaxBuyerPriceLabel/SpinBox.get_line_edit().text = "%3.f" % (buyer_highest_price * 100.0)
 	$CharacterCountControl/MinSellerPriceLabel/SpinBox.get_line_edit().text = "%3.f" % (seller_lowest_price * 100.0)
 	$CharacterCountControl/MaxSellerPriceLabel/SpinBox.get_line_edit().text = "%3.f" % (seller_highest_price * 100.0)
+	$CharacterCountControl/BuyerSellerRatioLabel/HSlider.value = character_ratio * 100.0
 
 func update_values():
 	character_count = int($CharacterCountControl/CharacterCountLabel/SpinBox.get_line_edit().text)
@@ -24,6 +25,7 @@ func update_values():
 	buyer_highest_price = float($CharacterCountControl/MaxBuyerPriceLabel/SpinBox.get_line_edit().text) / 100.0
 	seller_lowest_price = float($CharacterCountControl/MinSellerPriceLabel/SpinBox.get_line_edit().text) / 100.0
 	seller_highest_price = float($CharacterCountControl/MaxSellerPriceLabel/SpinBox.get_line_edit().text) / 100.0
+	character_ratio = $CharacterCountControl/BuyerSellerRatioLabel/HSlider.value / 100.0
 
 func _on_StartButton_pressed():
 	update_values()
