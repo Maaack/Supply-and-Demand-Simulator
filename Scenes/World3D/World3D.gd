@@ -10,13 +10,18 @@ onready var trade_phase = $PhaseManager/Trade
 onready var return_phase = $PhaseManager/Return
 onready var adjust_phase = $PhaseManager/Adjust
 
+export(float, 0.01, 64) var time_scale : float = 1.0
+export(CharacterLayout) var character_layout_setting : int = CharacterLayout.CIRCLE
+export(int, 5, 50) var target_character_count : int = 25
+export(float, 0.0, 1.0) var character_ratio : float = 0.5
+export(float, 0.0, 1.0) var buyer_lowest_price : float = 0.0
+export(float, 0.0, 1.0) var buyer_highest_price : float = 1.0
+export(float, 0.0, 1.0) var seller_lowest_price : float = 0.0
+export(float, 0.0, 1.0) var seller_highest_price : float = 1.0
+
 var character_scene = preload("res://Scenes/Characters3D/Character3D.tscn")
-var character_ratio : float = 0.5
-var target_character_count : int = 25
 var character_array : Array = []
-var character_layout_setting : int = CharacterLayout.CIRCLE
 var default_time_to : float = 1.0
-var time_scale : float = 1.0
 var default_step_time : float = 1.0
 var character_control_counter : int = 0
 var buyer_seller_map : Dictionary = {}
@@ -126,16 +131,22 @@ func _update_character_positions():
 
 func _update_character_prices():
 	var buyer_count : int = get_buyer_count()
-	var i : int = 0
-	var total : int = buyer_count
+	var seller_count : int = character_array.size() - buyer_count
+	var buyer_iter : int = 0
+	var seller_iter : int = 0
 	for character in character_array:
-		if i >= total:
-			i -= buyer_count
-			total = character_array.size() - buyer_count
-		var amount : float = 100.0 * float(i) / float(total)
+		var ratio : float
+		var amount : float
+		if character.character_role == Character3D.CharacterRoles.BUYER:
+			ratio = float(buyer_iter) / float(buyer_count)
+			amount = ((ratio * (buyer_highest_price - buyer_lowest_price)) + buyer_lowest_price) * 100.0
+			buyer_iter += 1
+		else:
+			ratio = float(seller_iter) / float(seller_count)
+			amount = ((ratio * (seller_highest_price - seller_lowest_price)) + seller_lowest_price) * 100.0
+			seller_iter += 1
 		character.set_price_point(amount)
 		character.set_current_price_point(amount)
-		i += 1
 
 func get_buying_position(buyer : Character3D, seller : Character3D, buy_distance : float = 5.0):
 	var delta_vector : Vector3 = seller.translation - buyer.translation
