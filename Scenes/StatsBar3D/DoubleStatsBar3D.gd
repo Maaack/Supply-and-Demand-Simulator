@@ -14,7 +14,6 @@ func set_base_max(base_max : float):
 	$StatsBar3D2.max_value = base_max
 
 func set_role(role : int):
-	print("setting role as %d" % role)
 	$StatsBar3D1.set_role(role)
 	$StatsBar3D2.set_role(role)
 
