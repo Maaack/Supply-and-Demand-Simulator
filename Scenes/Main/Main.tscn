@@ -36,22 +36,23 @@ render_target_update_mode = 3
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.344
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer2"]
-size = Vector2( 960, 540 )
+size = Vector2( 960, 371 )
 own_world = true
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="GraphWorld" parent="ViewportContainer2/Viewport" instance=ExtResource( 7 )]
+camera_max_size = 60.0
+stat_max_scale = 4.5
 
 [node name="GraphUI" parent="." instance=ExtResource( 3 )]
 

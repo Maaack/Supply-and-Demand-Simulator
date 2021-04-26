@@ -14,6 +14,7 @@ var seller_matte_material = preload("res://Assets/Originals/gltf/SellerStatsBar.
 var max_value : float = 100.0
 var current_value : float = 100.0 setget set_value
 var full_size : float = 2.8
+var stat_scale : float = 1.0
 var stats_bar_top_offset : Vector3 = Vector3(0.0, 0.015, 0.0)
 
 func update_material():
@@ -46,8 +47,8 @@ func set_value(value : float):
 	if current_value != value:
 		current_value = value
 		var scale_ratio = current_value / max_value
-		$StatsBarSpatial.scale.y = scale_ratio
-		$StatsBarTop.translation.y = (scale_ratio * full_size) + stats_bar_top_offset.y
+		$StatsBarSpatial.scale.y = scale_ratio * stat_scale
+		$StatsBarTop.translation.y = (scale_ratio * full_size * stat_scale) + stats_bar_top_offset.y
 
 func _ready():
 	update_material()

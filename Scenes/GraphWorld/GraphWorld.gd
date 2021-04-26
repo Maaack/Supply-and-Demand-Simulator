@@ -4,6 +4,8 @@ extends Spatial
 export var double_bar_x_offset : float = 1.6
 export var camera_base_size : float = 5.0
 export var camera_max_size : float = 100.0
+export var stat_base_scale : float = 1.0
+export var stat_max_scale : float = 5.0
 export var max_graph_count : int = 100
 
 var double_bar_scene = preload("res://Scenes/StatsBar3D/DoubleStatsBar3D.tscn")
@@ -23,10 +25,12 @@ func reset_graph_positions():
 		var ratio = float(iter) / float(size)
 		double_bar.translation.x = (ratio * total_length) - (total_length / 2) + double_bar_x_offset / 2
 		iter += 1
+		double_bar.set_stat_scale((ratio * (stat_max_scale - stat_base_scale)) + stat_base_scale)
 	var max_ratio : float = float(size) / float(max_graph_count)
 	$Spatial/Camera.size = int((camera_max_size - camera_base_size) * max_ratio + camera_base_size)
 
 func attach_character(character : Character3D):
+	$StatsFlatBase3D.visible = true
 	if character_graph_map.size() >= max_graph_count:
 		return
 	var double_bar : DoubleStatsBar3D = _new_double_bar()

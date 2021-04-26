@@ -11,9 +11,9 @@ size = Vector3( 1.6, 0.06, 0.4 )
 
 [node name="GraphWorld" type="Spatial"]
 script = ExtResource( 3 )
-camera_max_size = 85.0
 
 [node name="StatsFlatBase3D" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -27,10 +27,10 @@ transform = Transform( 0.694658, 0.589249, -0.412596, 0, 0.573576, 0.819152, 0.7
 environment = ExtResource( 4 )
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0 )
+transform = Transform( 0.939693, -0.116978, 0.321394, 0, 0.939693, 0.34202, -0.34202, -0.321394, 0.883022, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 40 )
 projection = 1
 current = true
 size = 5.0
