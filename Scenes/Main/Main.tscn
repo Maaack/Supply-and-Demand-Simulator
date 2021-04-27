@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/World3D/World3D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UI/Graph/GraphUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Themes/TitleFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/UI/MenuControl/MenuControl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=5]
-[ext_resource path="res://Scenes/UI/StartPanel/StartPanel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/GraphWorld/GraphWorld.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Control"]
@@ -51,10 +49,9 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="GraphWorld" parent="ViewportContainer2/Viewport" instance=ExtResource( 7 )]
-camera_max_size = 60.0
-stat_max_scale = 4.5
-
-[node name="GraphUI" parent="." instance=ExtResource( 3 )]
+camera_max_size = 35.0
+stat_max_scale = 7.5
+max_graph_count = 50
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -119,31 +116,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartUI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TitleLabel" type="Label" parent="StartUI"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -233.0
-margin_top = 105.0
-margin_right = 233.0
-margin_bottom = 204.0
-custom_fonts/font = ExtResource( 4 )
-text = "Economy Sim"
-align = 1
-
-[node name="StartPanel" parent="StartUI" instance=ExtResource( 6 )]
-character_count = 12
+[node name="MenuControl" parent="." instance=ExtResource( 4 )]
 
 [connection signal="character_created" from="ViewportContainer/Viewport/World3D" to="." method="_on_World3D_character_created"]
 [connection signal="value_changed" from="Control/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Control/OneCircleButton" to="." method="_on_OneCircleButton_pressed"]
 [connection signal="pressed" from="Control/TwoCirclesButton" to="." method="_on_TwoCirclesButton_pressed"]
 [connection signal="value_changed" from="Control/TimeVSlider" to="." method="_on_VSlider_value_changed"]
-[connection signal="count_updated" from="StartUI/StartPanel" to="." method="_on_StartPanel_count_updated"]
-[connection signal="start_button_pressed" from="StartUI/StartPanel" to="." method="_on_StartPanel_start_button_pressed"]
+[connection signal="start_button_pressed" from="MenuControl" to="." method="_on_MenuControl_start_button_pressed"]

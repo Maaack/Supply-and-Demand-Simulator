@@ -14,10 +14,10 @@ export(float, 0.01, 64) var time_scale : float = 1.0
 export(CharacterLayout) var character_layout_setting : int = CharacterLayout.CIRCLE
 export(int, 5, 50) var target_character_count : int = 25
 export(float, 0.0, 1.0) var character_ratio : float = 0.5
-export(float, 0.0, 1.0) var buyer_lowest_price : float = 0.0
-export(float, 0.0, 1.0) var buyer_highest_price : float = 1.0
-export(float, 0.0, 1.0) var seller_lowest_price : float = 0.0
-export(float, 0.0, 1.0) var seller_highest_price : float = 1.0
+export(float, 0.0, 1.0) var buyer_min_price : float = 0.0
+export(float, 0.0, 1.0) var buyer_max_price : float = 1.0
+export(float, 0.0, 1.0) var seller_min_price : float = 0.0
+export(float, 0.0, 1.0) var seller_max_price : float = 1.0
 
 var character_scene = preload("res://Scenes/Characters3D/Character3D.tscn")
 var character_array : Array = []
@@ -139,11 +139,11 @@ func _update_character_prices():
 		var amount : float
 		if character.character_role == Character3D.CharacterRoles.BUYER:
 			ratio = float(buyer_iter) / float(buyer_count)
-			amount = ((ratio * (buyer_highest_price - buyer_lowest_price)) + buyer_lowest_price) * 100.0
+			amount = ((ratio * (buyer_max_price - buyer_min_price)) + buyer_min_price) * 100.0
 			buyer_iter += 1
 		else:
 			ratio = float(seller_iter) / float(seller_count)
-			amount = ((ratio * (seller_highest_price - seller_lowest_price)) + seller_lowest_price) * 100.0
+			amount = ((ratio * (seller_max_price - seller_min_price)) + seller_min_price) * 100.0
 			seller_iter += 1
 		character.set_price_point(amount)
 		character.set_current_price_point(amount)

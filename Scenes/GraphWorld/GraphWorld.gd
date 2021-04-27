@@ -20,13 +20,13 @@ func reset_graph_positions():
 	var iter : int = 0
 	var size : int = character_graph_map.size()
 	$StatsFlatBase3D.scale.x = float(size)
+	var max_ratio : float = float(size) / float(max_graph_count)
 	var total_length : float = double_bar_x_offset * size
 	for double_bar in character_graph_map.values():
 		var ratio = float(iter) / float(size)
 		double_bar.translation.x = (ratio * total_length) - (total_length / 2) + double_bar_x_offset / 2
 		iter += 1
-		double_bar.set_stat_scale((ratio * (stat_max_scale - stat_base_scale)) + stat_base_scale)
-	var max_ratio : float = float(size) / float(max_graph_count)
+		double_bar.set_stat_scale((max_ratio * (stat_max_scale - stat_base_scale)) + stat_base_scale)
 	$Spatial/Camera.size = int((camera_max_size - camera_base_size) * max_ratio + camera_base_size)
 
 func attach_character(character : Character3D):

@@ -3,6 +3,6 @@
 [ext_resource path="res://Assets/Sourced/Fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 20
 use_filter = true
 font_data = ExtResource( 1 )

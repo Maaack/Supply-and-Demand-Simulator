@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Themes/SmallBoldFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Themes/SmallFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Scenes/UI/InstructionsPanel/InstructionsPanel.gd" type="Script" id=6]
+
+[node name="InstructionsPanel" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 120.0
+margin_right = -120.0
+margin_bottom = -120.0
+theme = ExtResource( 5 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 557.556 ],
+"_edit_use_anchors_": false
+}
+
+[node name="BuyerLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -782.556
+margin_top = 17.5563
+margin_right = -276.556
+margin_bottom = 105.556
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+bbcode_enabled = true
+bbcode_text = "This is a [b]Buyer[/b]. Everyday, they visit a random [b]Seller[/b] and try to buy an apple."
+text = "This is a Buyer. Everyday, they visit a random Seller and try to buy an apple."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellerLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 296.373
+margin_top = 17.5563
+margin_right = 757.373
+margin_bottom = 103.556
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+bbcode_enabled = true
+bbcode_text = "This is a [b]Seller[/b]. Everyday, they wait for [b]Buyers[/b] and try to sell apples."
+text = "This is a Seller. Everyday, they wait for Buyers and try to sell apples."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PricesLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.0
+margin_top = 17.5563
+margin_right = 232.0
+margin_bottom = 224.556
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+bbcode_enabled = true
+bbcode_text = "These are the [b]Prices[/b]. The left bar is the [b]Buyer's[/b] maximum and [b]Seller's[/b] minimum. The right bar is the expected price after daily adjustments."
+text = "These are the Prices. The left bar is the Buyer's maximum and Seller's minimum. The right bar is the expected price after daily adjustments."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -126.0
+margin_top = -162.0
+margin_right = 126.0
+margin_bottom = -56.0
+rect_min_size = Vector2( 252, 106 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
