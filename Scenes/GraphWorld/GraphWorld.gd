@@ -1,7 +1,7 @@
 extends Spatial
 
 
-export var double_bar_x_offset : float = 1.6
+export var double_bar_x_offset : float = 1.65
 export var camera_base_size : float = 5.0
 export var camera_max_size : float = 100.0
 export var stat_base_scale : float = 1.0

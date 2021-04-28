@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Themes/TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Themes/RegularFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Themes/SmallFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Scenes/UI/IntroPanel/IntroPanel.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Originals/buyer.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Originals/seller.png" type="Texture" id=8]
 
 [node name="IntroPanel" type="Panel"]
 anchor_right = 1.0
@@ -17,6 +19,7 @@ margin_bottom = -120.0
 theme = ExtResource( 5 )
 script = ExtResource( 6 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 173.322, 487.276, 409.914 ],
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 843.0 ]
 }
@@ -94,5 +97,15 @@ text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Buyer" type="Sprite" parent="."]
+position = Vector2( 1368.41, 289.914 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Seller" type="Sprite" parent="."]
+position = Vector2( 290.454, 289.914 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

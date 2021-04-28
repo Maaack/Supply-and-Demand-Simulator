@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Themes/SmallBoldFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Originals/buyer.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Originals/seller.png" type="Texture" id=3]
 [ext_resource path="res://Themes/SmallFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Scenes/UI/InstructionsPanel/InstructionsPanel.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Originals/bothstatbars.png" type="Texture" id=7]
 
 [node name="InstructionsPanel" type="Panel"]
 anchor_right = 1.0
@@ -90,5 +93,20 @@ text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BothStatBars" type="Sprite" parent="."]
+position = Vector2( 828.539, 215.128 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Buyer" type="Sprite" parent="."]
+position = Vector2( 296.795, 246.584 )
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Seller" type="Sprite" parent="."]
+position = Vector2( 1381.5, 245.998 )
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 3 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
