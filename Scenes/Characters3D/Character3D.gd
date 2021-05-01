@@ -63,6 +63,13 @@ func get_angle_on_y_axis(translation_to_face : Vector3):
 		angle *= -1.0
 	return angle
 
+func face_to(new_translation : Vector3, time_to : float = 1.0):
+	var vector_mask : Vector3 = Vector3.FORWARD + Vector3.RIGHT
+	var new_masked_translation : Vector3 = (new_translation - translation) * vector_mask
+	var angle = get_angle_on_y_axis(new_masked_translation)
+	$Tween.interpolate_property(character_spatial, "rotation:y", character_spatial.rotation.y, angle, time_to/10)
+	$Tween.start()
+
 func move_to(new_translation : Vector3, time_to : float = 1.0):
 	var vector_mask : Vector3 = Vector3.FORWARD + Vector3.RIGHT
 	var masked_translation : Vector3 = translation * vector_mask

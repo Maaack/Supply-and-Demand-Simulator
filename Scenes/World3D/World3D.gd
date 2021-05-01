@@ -218,6 +218,7 @@ func _increment_buyers_only():
 	return true
 
 func do_transaction(buyer : Character3D, seller : Character3D):
+	seller.face_to(buyer.translation, get_time_to())
 	if buyer.current_price_point >= seller.current_price_point:
 		var avg : float = (buyer.current_price_point + seller.current_price_point) / 2.0
 		buyer.add_transaction(avg)
