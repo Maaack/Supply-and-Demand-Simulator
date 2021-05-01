@@ -26,7 +26,7 @@ far = 180.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.694658, 0.589249, -0.412596, 0, 0.573576, 0.819152, 0.71934, -0.569031, 0.398439, 0, 20, 20 )
-light_energy = 0.5
+light_energy = 0.45
 shadow_enabled = true
 shadow_bias = 0.5
 
