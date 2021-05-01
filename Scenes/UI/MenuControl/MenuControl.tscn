@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/UI/IntroPanel/IntroPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/UI/MenuControl/MenuControl.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/UI/InstructionsPanel/InstructionsPanel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/UI/StartPanel/StartPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/SettingsPanel/SettingsPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/MenuControl/MenuControlSwipeOutLeft.tres" type="Animation" id=5]
 [ext_resource path="res://Scenes/UI/MenuControl/MenuControlSwipeInLeft.tres" type="Animation" id=6]
 [ext_resource path="res://Scenes/UI/MenuControl/MenuControlSwipeInRight.tres" type="Animation" id=7]
@@ -31,15 +31,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartPanel" parent="MenuContainer" instance=ExtResource( 4 )]
-visible = false
-character_count = 12
+[node name="SettingsPanel" parent="MenuContainer" instance=ExtResource( 4 )]
+character_count = 2
 
 [node name="IntroPanel" parent="MenuContainer" instance=ExtResource( 1 )]
+visible = false
 
 [node name="InstructionsPanel" parent="MenuContainer" instance=ExtResource( 3 )]
 visible = false
 
-[connection signal="start_button_pressed" from="MenuContainer/StartPanel" to="." method="_on_StartPanel_start_button_pressed"]
+[connection signal="start_button_pressed" from="MenuContainer/SettingsPanel" to="." method="_on_SettingsPanel_start_button_pressed"]
 [connection signal="continue_button_pressed" from="MenuContainer/IntroPanel" to="." method="_on_IntroPanel_continue_button_pressed"]
 [connection signal="continue_button_pressed" from="MenuContainer/InstructionsPanel" to="." method="_on_InstructionsPanel_continue_button_pressed"]

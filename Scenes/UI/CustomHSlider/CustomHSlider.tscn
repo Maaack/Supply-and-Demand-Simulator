@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Originals/pngs/BuyerLittleButton.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/UI/RangeSlider/RangeSliderStyleBox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Scenes/UI/CustomHSlider/CustomHSlider.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Originals/pngs/BuyerBigButton.png" type="Texture" id=4]
+
+[node name="CustomHSlider" type="HSlider"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/slider = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+grabber = ExtResource( 1 )
+grabber_highlight = ExtResource( 4 )

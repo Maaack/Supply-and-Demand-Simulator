@@ -17,11 +17,13 @@ seller_color = Color( 0.164706, 0.4, 0.898039, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="SellerCharacter" parent="." instance=ExtResource( 2 )]
+[node name="CharacterSpatial" type="Spatial" parent="."]
+
+[node name="SellerCharacter" parent="CharacterSpatial" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19014, 0 )
 visible = false
 
-[node name="BuyerCharacter" parent="." instance=ExtResource( 3 )]
+[node name="BuyerCharacter" parent="CharacterSpatial" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19014, 0 )
 
 [node name="StatsArrows" parent="." instance=ExtResource( 4 )]

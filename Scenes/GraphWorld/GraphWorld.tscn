@@ -7,7 +7,7 @@
 
 [sub_resource type="CubeMesh" id=1]
 material = ExtResource( 2 )
-size = Vector3( 1.6, 0.06, 0.4 )
+size = Vector3( 1.65, 0.06, 0.4 )
 
 [node name="GraphWorld" type="Spatial"]
 script = ExtResource( 3 )

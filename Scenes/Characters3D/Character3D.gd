@@ -13,6 +13,10 @@ enum ItemTypes{APPLE, COINS}
 export var buyer_color : Color
 export var seller_color : Color
 
+onready var buyer_character = $CharacterSpatial/BuyerCharacter
+onready var seller_character = $CharacterSpatial/SellerCharacter
+onready var character_spatial = $CharacterSpatial
+
 var character_role : int
 var price_point : float
 var current_price_point : float
@@ -26,39 +30,33 @@ func set_home(position : Vector3):
 func is_home():
 	return home_position == translation
 
-func get_active_character_node():
-	match character_role:
-		CharacterRoles.BUYER:
-			return $BuyerCharacter
-		CharacterRoles.SELLER:
-			return $SellerCharacter
+func is_buyer():
+	return character_role == CharacterRoles.BUYER
+
+func is_seller():
+	return character_role == CharacterRoles.SELLER
 
 func set_role(value : int):
 	character_role = value
 	match character_role:
 		CharacterRoles.BUYER:
-			$SellerCharacter.visible = false
-			$BuyerCharacter.visible = true
+			seller_character.visible = false
+			buyer_character.visible = true
 		CharacterRoles.SELLER:
-			$BuyerCharacter.visible = false
-			$SellerCharacter.visible = true
+			buyer_character.visible = false
+			seller_character.visible = true
 	emit_signal("role_updated", character_role)
-	$DoubleStatsBar3D/StatsBar3D1.set_role(character_role)
-	$DoubleStatsBar3D/StatsBar3D2.set_role(character_role)
 
 func set_price_point(value : float):
 	price_point = value
-	$DoubleStatsBar3D/StatsBar3D2.current_value = value
 	reset_history()
 	emit_signal("price_point_updated", price_point)
 
 func set_current_price_point(value : float):
 	current_price_point = value
-	$DoubleStatsBar3D/StatsBar3D1.current_value = value
 	emit_signal("current_price_point_updated", current_price_point)
 
 func get_angle_on_y_axis(translation_to_face : Vector3):
-	var active_character : Spatial = get_active_character_node()
 	var cross : Vector3 = Vector3.FORWARD.cross(translation_to_face).normalized()
 	var angle : float = Vector3.FORWARD.angle_to(translation_to_face)
 	if cross.y > 0:
@@ -73,10 +71,9 @@ func move_to(new_translation : Vector3, time_to : float = 1.0):
 		return
 	if $Tween.is_active():
 		$Tween.stop_all()
-	var active_character = get_active_character_node()
 	var angle = get_angle_on_y_axis(new_masked_translation)
 	$Tween.interpolate_property(self, "translation", translation, new_translation, time_to)
-	$Tween.interpolate_property(active_character, "rotation:y", active_character.rotation.y, angle, time_to/10)
+	$Tween.interpolate_property(character_spatial, "rotation:y", character_spatial.rotation.y, angle, time_to/10)
 	$Tween.start()
 
 func go_home(time_to : float = 1.0):
@@ -129,4 +126,5 @@ func reset_history():
 	current_price_point = price_point
 
 func _ready():
+	$DoubleStatsBar3D.character = self
 	$DoubleStatsBar3D.set_stat_scale(2.0)
