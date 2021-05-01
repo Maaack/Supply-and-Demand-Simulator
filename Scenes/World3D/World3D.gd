@@ -291,9 +291,10 @@ func _on_SpawnDelay_timeout():
 func start_sim():
 	$SpawnDelay.start()
 
-
 func _on_Adjust_phase_entered():
 	time_mod = 2.0
+	_update_simulate_step_time()
 
 func _on_Travel_phase_entered():
 	time_mod = 1.0
+	_update_simulate_step_time()
