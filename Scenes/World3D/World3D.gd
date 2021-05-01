@@ -10,7 +10,7 @@ onready var trade_phase = $PhaseManager/Trade
 onready var return_phase = $PhaseManager/Return
 onready var adjust_phase = $PhaseManager/Adjust
 
-export(float, 0.01, 64) var time_scale : float = 1.0
+export(float, 0.25, 64) var time_scale : float = 1.0
 export(CharacterLayout) var character_layout_setting : int = CharacterLayout.CIRCLE
 export(int, 5, 50) var target_character_count : int = 25
 export(float, 0.0, 1.0) var character_ratio : float = 0.5
@@ -27,11 +27,12 @@ var sellers_array : Array = []
 var character_iter : int = 0
 var buyers_iter : int = 0
 var sellers_iter : int = 0
-var default_time_to : float = 1.0
-var default_step_time : float = 1.0
+var default_time_to : float = 0.5
+var default_step_time : float = 0.5
 var buyer_seller_map : Dictionary = {}
 var seller_return_map : Dictionary = {}
 var active_character : Character3D
+var time_mod : float = 1.0
 
 func get_time_to():
 	if time_scale == 0.0:
@@ -190,7 +191,7 @@ func get_buying_position(buyer : Character3D, seller : Character3D, buy_distance
 	return delta_vector - buy_vector + buyer.translation
 
 func _update_simulate_step_time():
-	$SimulateStep.wait_time = default_step_time / time_scale
+	$SimulateStep.wait_time = default_step_time / (time_scale * time_mod)
 
 func _increment_characters():
 	var character_list : Array = get_character_list()
@@ -288,3 +289,10 @@ func _on_SpawnDelay_timeout():
 
 func start_sim():
 	$SpawnDelay.start()
+
+
+func _on_Adjust_phase_entered():
+	time_mod = 2.0
+
+func _on_Travel_phase_entered():
+	time_mod = 1.0

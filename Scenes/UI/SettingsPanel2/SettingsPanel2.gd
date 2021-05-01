@@ -5,15 +5,20 @@ signal character_layout_updated(value)
 signal character_ratio_updated(value)
 signal buyer_values_updated(min_value, max_value)
 signal seller_values_updated(min_value, max_value)
+signal speed_updated(value)
 signal character_added
 signal toggle_activated
 
+const SPEED_EXPONENT_MAX = 6
+const SPEED_EXPONENT_MIN = -2
 enum LayoutSettings{ONE_CIRCLE, TWO_CIRCLES}
+
 export(float, 0.0, 1.0) var character_ratio : float = 0.5
-export(float, 0.0, 1.0) var buyer_min_price : float = 0.2
+export(float, 0.0, 1.0) var buyer_min_price : float = 0.4
 export(float, 0.0, 1.0) var buyer_max_price : float = 1.0
 export(float, 0.0, 1.0) var seller_min_price : float = 0.0
-export(float, 0.0, 1.0) var seller_max_price : float = 0.8
+export(float, 0.0, 1.0) var seller_max_price : float = 0.6
+export(int, -2, 6) var speed_exponent : int = 0
 export(LayoutSettings) var character_layout : int = 0
 
 onready var buyer_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer/BuyerSlider1
@@ -88,11 +93,17 @@ func _on_Button_pressed():
 	if ready:
 		emit_signal("character_added")
 
-func _on_ToggleButton_mouse_entered():
+func activate_panel():
 	if not activated:
 		activated = true
 		$AnimationPlayer.play("SettingsPanel2MoveUp")
 		emit_signal("toggle_activated")
+
+func _on_ToggleButton_mouse_entered():
+	activate_panel()
+
+func _on_ToggleButton_pressed():
+	activate_panel()
 
 func _on_HideDelayTimer_timeout():
 	$AnimationPlayer.play("SettingsPanel2MoveDown")
@@ -104,3 +115,24 @@ func _on_SettingsPanel2_mouse_entered():
 func start_hide_timer():
 	if activated:
 		$HideDelayTimer.start()
+
+func get_speed():
+	return pow(2.0, speed_exponent)
+
+func update_speed():
+	var new_speed : float = get_speed()
+	var right_pad : int = 0
+	if speed_exponent < 0:
+		right_pad = abs(speed_exponent)
+	$MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/SpeedLabel.text = "Speed %1.*fx" % [right_pad, new_speed]
+	emit_signal("speed_updated", new_speed)
+
+func _on_SpeedDownButton_pressed():
+	if speed_exponent > SPEED_EXPONENT_MIN:
+		speed_exponent -= 1
+		update_speed()
+
+func _on_SpeedUpButton_pressed():
+	if speed_exponent < SPEED_EXPONENT_MAX:
+		speed_exponent += 1
+		update_speed()

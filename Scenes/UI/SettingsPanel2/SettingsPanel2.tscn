@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/UI/CustomHSlider/CustomHSlider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Originals/pngs/UpButtonHighlighted.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Scenes/UI/SettingsPanel2/SettingsPanel2.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/UI/SettingsPanel2/SettingsPanel2MoveUp.tres" type="Animation" id=10]
 [ext_resource path="res://Scenes/UI/SettingsPanel2/SettingsPanel2MoveDown.tres" type="Animation" id=11]
+[ext_resource path="res://Assets/Sourced/Icons/fast-backward-button_48x48.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sourced/Icons/fast-forward-button_48x48.png" type="Texture" id=13]
 
 [node name="SettingsPanel2" type="Panel"]
 anchor_top = 1.0
@@ -101,12 +103,13 @@ grabber_highlight = ExtResource( 5 )
 margin_top = 160.0
 margin_right = 864.0
 margin_bottom = 211.0
+custom_constants/separation = 48
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LayoutButton" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_right = 285.0
+margin_right = 219.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 text = "1 Circle"
@@ -114,17 +117,32 @@ items = [ "1 Circle", null, false, 0, null, "2 Circles", null, false, 1, null ]
 selected = 0
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 289.0
-margin_right = 574.0
+margin_left = 267.0
+margin_right = 487.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 text = "Add 1"
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 578.0
+[node name="SpeedDownButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.666667, 0.666667, 0.666667, 1 )
+margin_left = 535.0
+margin_right = 583.0
+margin_bottom = 51.0
+texture_normal = ExtResource( 12 )
+
+[node name="SpeedLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 631.0
+margin_top = 3.0
+margin_right = 768.0
+margin_bottom = 48.0
+text = "Speed 1x"
+
+[node name="SpeedUpButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.666667, 0.666667, 0.666667, 1 )
+margin_left = 816.0
 margin_right = 864.0
 margin_bottom = 51.0
-size_flags_horizontal = 3
+texture_normal = ExtResource( 13 )
 
 [node name="ToggleButton" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -154,5 +172,8 @@ one_shot = true
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer2/SellerSlider2" to="." method="_on_SellerSlider2_value_changed"]
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/LayoutButton" to="." method="_on_LayoutButton_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/SpeedDownButton" to="." method="_on_SpeedDownButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/SpeedUpButton" to="." method="_on_SpeedUpButton_pressed"]
 [connection signal="mouse_entered" from="ToggleButton" to="." method="_on_ToggleButton_mouse_entered"]
+[connection signal="pressed" from="ToggleButton" to="." method="_on_ToggleButton_pressed"]
 [connection signal="timeout" from="HideDelayTimer" to="." method="_on_HideDelayTimer_timeout"]

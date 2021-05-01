@@ -48,3 +48,5 @@ one_shot = true
 
 [connection signal="timeout" from="SpawnDelay" to="." method="_on_SpawnDelay_timeout"]
 [connection signal="timeout" from="SimulateStep" to="." method="_on_SimulateStep_timeout"]
+[connection signal="phase_entered" from="PhaseManager/Travel" to="." method="_on_Travel_phase_entered"]
+[connection signal="phase_entered" from="PhaseManager/Adjust" to="." method="_on_Adjust_phase_entered"]
