@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="drawing.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4649">
+      <stop
+         style="stop-color:#0242e7;stop-opacity:1;"
+         offset="0"
+         id="stop4645" />
+      <stop
+         style="stop-color:#e78600;stop-opacity:1"
+         offset="1"
+         id="stop4647" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4649"
+       id="linearGradient4651"
+       x1="30.775354"
+       y1="49.351242"
+       x2="31.083664"
+       y2="49.351242"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4649"
+       id="linearGradient4674"
+       gradientUnits="userSpaceOnUse"
+       x1="30.775354"
+       y1="49.351242"
+       x2="31.083664"
+       y2="49.351242"
+       gradientTransform="matrix(0.67554757,0,0,0.67554757,7.6498088,37.274305)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="418.116"
+     inkscape:cy="777.53191"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="96.431176,216.46224"
+       orientation="0,1"
+       id="guide4697"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="95.415365,216.68666"
+       orientation="1,0"
+       id="guide4699"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="100.15188,218.10408"
+       orientation="0,1"
+       inkscape:locked="false"
+       id="guide4721" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       id="path10"
+       cx="11.235742"
+       cy="11.256783"
+       r="11.231867"
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.53303772"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <ellipse
+       id="path10-3"
+       cx="30.858639"
+       cy="49.351242"
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.40075323"
+       rx="8.4460068"
+       ry="8.4428806"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <rect
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.1709047"
+       id="rect4554"
+       width="22.586395"
+       height="11.317689"
+       x="30.227766"
+       y="4.9742522"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <circle
+       id="path10-3-5"
+       cx="53.011162"
+       cy="17.297619"
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.37863043"
+       r="0" />
+    <ellipse
+       id="path10-3-3"
+       cx="65.859398"
+       cy="10.587266"
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.27090299"
+       rx="5.7104278"
+       ry="5.7062006"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <circle
+       id="path10-5"
+       cx="80.754402"
+       cy="49.135395"
+       r="11.231867"
+       style="fill:#0242e7;fill-opacity:1;stroke-width:0.53303772"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <rect
+       style="fill:#0242e7;fill-opacity:1;stroke-width:0.1709047"
+       id="rect4554-6"
+       width="22.586395"
+       height="11.317689"
+       x="99.612793"
+       y="43.521042"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <ellipse
+       id="path10-3-3-2"
+       cx="135.24442"
+       cy="49.134056"
+       style="fill:#0242e7;fill-opacity:1;stroke-width:0.27090299"
+       rx="5.7104278"
+       ry="5.7062006"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <rect
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       y="75.860657"
+       x="56.582401"
+       height="11.317689"
+       width="22.586395"
+       id="rect4628"
+       style="fill:#999999;fill-opacity:1;stroke-width:0.1709047" />
+    <ellipse
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       ry="11.252044"
+       rx="11.260379"
+       style="fill:#e6e6e6;fill-opacity:1;stroke-width:0.53419298"
+       cy="91.963997"
+       cx="106.45023"
+       id="ellipse4630"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/UpButtonHighlighted.png" />
+    <ellipse
+       ry="4.2349439"
+       rx="4.2365117"
+       style="fill:#e78600;fill-opacity:1;stroke-width:0.20101757"
+       cy="47.816002"
+       cx="53.509731"
+       id="ellipse4641" />
+    <ellipse
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       ry="8.4428806"
+       rx="8.4460068"
+       style="fill:url(#linearGradient4651);fill-opacity:1;stroke-width:0.40075323"
+       cy="49.351242"
+       cx="30.858639"
+       id="ellipse4643" />
+    <ellipse
+       id="ellipse4672"
+       cx="28.496286"
+       cy="70.613419"
+       style="fill:url(#linearGradient4674);fill-opacity:1;stroke-width:0.27072787"
+       rx="5.7056794"
+       ry="5.7035675"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <circle
+       style="fill:#333333;fill-opacity:1;stroke-width:0.5217312"
+       id="path4701"
+       cx="106.43861"
+       cy="91.963074"
+       r="9.6427126"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/UpButton.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#e6e6e6;stroke-width:1.9718976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 112.93697,93.855061 -6.49835,-5.985938 -6.475066,5.985936"
+       id="path4703"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/UpButton.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72"
+       sodipodi:nodetypes="ccc" />
+  </g>
+</svg>
