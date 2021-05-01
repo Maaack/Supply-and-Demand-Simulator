@@ -3,16 +3,6 @@ extends Control
 onready var world_3d = $ViewportContainer/Viewport/World3D
 onready var graph_world = $ViewportContainer2/Viewport/GraphWorld
 
-func _on_VSlider_value_changed(value : float):
-	world_3d.time_scale = value
-
-func set_target_character_count(value : int):
-	world_3d.target_character_count = value
-
-func _ready():
-	world_3d.time_scale = $Control/TimeVSlider.value
-	set_target_character_count($MenuControl.get_character_count())
-
 func _on_World3D_character_created(character):
 	var graph = graph_world.add_graph()
 	if is_instance_valid(graph):
@@ -34,6 +24,7 @@ func reset_simulation():
 	world_3d.seller_min_price = $SettingsPanel2.seller_min_price
 	world_3d.character_ratio = $SettingsPanel2.character_ratio
 	world_3d.character_layout_setting = $SettingsPanel2.character_layout
+	world_3d.time_scale = $SettingsPanel2.get_speed()
 	world_3d.start_sim()
 	$MenuControl.hide()
 	$Control.show()
@@ -72,3 +63,6 @@ func _on_SettingsPanel2_character_added():
 
 func _on_Control_mouse_entered():
 	$SettingsPanel2.start_hide_timer()
+
+func _on_SettingsPanel2_speed_updated(value):
+	world_3d.time_scale = value

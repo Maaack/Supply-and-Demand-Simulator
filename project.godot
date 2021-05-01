@@ -56,7 +56,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Economy Sim"
+config/name="Supply and Demand Simulator"
 run/main_scene="res://Scenes/Main/Main.tscn"
 config/icon="res://icon.png"
 

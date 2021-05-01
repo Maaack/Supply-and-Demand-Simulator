@@ -60,32 +60,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeVSlider" type="VSlider" parent="Control"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -44.0
-margin_top = -142.0
-min_value = 1.0
-max_value = 16.0
-step = 0.5
-value = 8.5
-tick_count = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SettingsPanel2" parent="." instance=ExtResource( 3 )]
 
 [node name="MenuControl" parent="." instance=ExtResource( 4 )]
 
 [connection signal="character_created" from="ViewportContainer/Viewport/World3D" to="." method="_on_World3D_character_created"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_Control_mouse_entered"]
-[connection signal="value_changed" from="Control/TimeVSlider" to="." method="_on_VSlider_value_changed"]
 [connection signal="buyer_values_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_buyer_values_updated"]
 [connection signal="character_added" from="SettingsPanel2" to="." method="_on_SettingsPanel2_character_added"]
 [connection signal="character_layout_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_character_layout_updated"]
 [connection signal="character_ratio_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_character_ratio_updated"]
 [connection signal="seller_values_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_seller_values_updated"]
+[connection signal="speed_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_speed_updated"]
 [connection signal="start_button_pressed" from="MenuControl" to="." method="_on_MenuControl_start_button_pressed"]
