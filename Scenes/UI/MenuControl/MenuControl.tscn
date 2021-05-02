@@ -32,10 +32,10 @@ __meta__ = {
 }
 
 [node name="SettingsPanel" parent="MenuContainer" instance=ExtResource( 4 )]
-character_count = 2
+visible = false
+character_count = 5
 
 [node name="IntroPanel" parent="MenuContainer" instance=ExtResource( 1 )]
-visible = false
 
 [node name="InstructionsPanel" parent="MenuContainer" instance=ExtResource( 3 )]
 visible = false
