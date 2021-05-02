@@ -16,7 +16,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 environment = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.999998, 0.00197121, -5.96803e-05, -0.00180223, 0.925723, 0.378199, 0.000800758, -0.378198, 0.925725, -4.22123e-05, 23.5843, 53.2572 )
+transform = Transform( 1, 0, 0, 0, 0.945519, 0.325568, 0, -0.325568, 0.945519, -4.22123e-05, 23.5843, 53.2572 )
 projection = 1
 current = true
 fov = 55.0

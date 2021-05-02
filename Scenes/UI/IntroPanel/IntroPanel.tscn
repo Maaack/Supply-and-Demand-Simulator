@@ -73,9 +73,9 @@ anchor_right = 0.5
 margin_left = -410.0
 margin_top = 412.0
 margin_right = 410.0
-margin_bottom = 725.0
+margin_bottom = 486.0
 custom_fonts/normal_font = ExtResource( 4 )
-custom_colors/default_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+custom_colors/default_color = Color( 0.784314, 0.784314, 0.784314, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Inspired by [url=https://www.youtube.com/watch?v=PNtKXWNKGN8]Simulating Supply and Demand[/url] created by [url=https://www.youtube.com/channel/UCKzJFdi57J53Vr_BkTfN3uQ]Primer[/url]"
 text = "Inspired by Simulating Supply and Demand created by Primer"

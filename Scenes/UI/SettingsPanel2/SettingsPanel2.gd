@@ -21,12 +21,12 @@ export(float, 0.0, 1.0) var seller_max_price : float = 0.6
 export(int, -2, 6) var speed_exponent : int = 0
 export(LayoutSettings) var character_layout : int = 0
 
-onready var buyer_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer/BuyerSlider1
-onready var buyer_slider_2 = $MarginContainer/HBoxContainer/VBoxContainer/BuyerSlider2
-onready var seller_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer2/SellerSlider1
-onready var seller_slider_2 = $MarginContainer/HBoxContainer/VBoxContainer2/SellerSlider2
+onready var buyer_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/BuyerSlider1
+onready var buyer_slider_2 = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/BuyerSlider2
+onready var seller_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/SellerSlider1
+onready var seller_slider_2 = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/SellerSlider2
 onready var ratio_slider = $MarginContainer/HBoxContainer/VBoxContainer/RatioSlider
-onready var layout_button = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/LayoutButton
+onready var layout_button = $MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/LayoutButton
 
 var ready : bool = false
 var activated : bool = false
@@ -124,7 +124,7 @@ func update_speed():
 	var right_pad : int = 0
 	if speed_exponent < 0:
 		right_pad = abs(speed_exponent)
-	$MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/SpeedLabel.text = "Speed %1.*fx" % [right_pad, new_speed]
+	$MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/SpeedLabel.text = "Speed %1.*fx" % [right_pad, new_speed]
 	emit_signal("speed_updated", new_speed)
 
 func _on_SpeedDownButton_pressed():
