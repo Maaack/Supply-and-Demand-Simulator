@@ -8,10 +8,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -284.0
-margin_top = -83.5
-margin_right = 284.0
-margin_bottom = 83.5
+margin_left = -292.0
+margin_top = -111.5
+margin_right = 292.0
+margin_bottom = 111.5
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -39,16 +39,22 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -100.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 536.0
-margin_bottom = 56.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 520.0
+margin_bottom = 88.0
 
 [node name="CharacterCountLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_right = 536.0
+margin_right = 488.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 56 )
 text = "Character Count:"
