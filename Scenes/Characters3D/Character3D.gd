@@ -16,6 +16,9 @@ export var seller_color : Color
 onready var buyer_character = $CharacterSpatial/BuyerCharacter
 onready var seller_character = $CharacterSpatial/SellerCharacter
 onready var character_spatial = $CharacterSpatial
+onready var apple_item = $ItemControl/Apple
+onready var coins_item = $ItemControl/Coins
+onready var no_item = $ItemControl/CrossOut
 
 var character_role : int
 var price_point : float
@@ -87,14 +90,22 @@ func go_home(time_to : float = 1.0):
 	move_to(home_position, time_to)
 
 func add_item(item_type : int):
+	var item_node
 	match(item_type):
 		ItemTypes.APPLE:
-			$ItemControl/Apple.visible = true
-			$ItemControl/Coins.visible = false
+			item_node = apple_item
 		ItemTypes.COINS:
-			$ItemControl/Apple.visible = false
-			$ItemControl/Coins.visible = true
+			item_node = coins_item
+	item_node.visible = true
 	$AnimationPlayer.play("ReceiveItem")
+	yield($AnimationPlayer, "animation_finished")
+	item_node.visible = false
+
+func no_item():
+	no_item.visible = true
+	$AnimationPlayer.play("GrowUpDown")
+	yield($AnimationPlayer, "animation_finished")
+	no_item.visible = false
 
 func add_transaction(avg : float = 0.0):
 	recent_transactions.append(avg)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Characters3D/Character3D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Originals/gltf/SellerCharacter.glb" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Scenes/Characters3D/Characters3DReceiveItem.tres" type="Animation" id=7]
 [ext_resource path="res://Assets/Originals/gltf/Apple.glb" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Originals/gltf/Coins.glb" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Originals/gltf/CrossOut.glb" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Characters3D/Characters3DGrowUpDown.tres" type="Animation" id=11]
 
 [node name="Character3D" type="Spatial"]
 script = ExtResource( 1 )
@@ -37,7 +39,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.74962, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88, 0 )
 
 [node name="ItemControl" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 
 [node name="Apple" parent="ItemControl" instance=ExtResource( 8 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
@@ -47,5 +49,10 @@ visible = false
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 visible = false
 
+[node name="CrossOut" parent="ItemControl" instance=ExtResource( 10 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0 )
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GrowUpDown = ExtResource( 11 )
 anims/ReceiveItem = ExtResource( 7 )

@@ -226,6 +226,8 @@ func do_transaction(buyer : Character3D, seller : Character3D):
 		buyer.add_item(Character3D.ItemTypes.APPLE)
 		seller.add_item(Character3D.ItemTypes.COINS)
 		return true
+	else:
+		buyer.no_item()
 	return false
 
 func _next_travel_cycle():
