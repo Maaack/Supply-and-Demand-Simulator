@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/World3D/World3D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/UI/SettingsPanel2/SettingsPanel2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/MenuControl/MenuControl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Assets/Originals/pngs/CloseButton.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/GraphWorld/GraphWorld.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Originals/pngs/CloseButtonHighlighted.png" type="Texture" id=8]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -64,6 +66,37 @@ __meta__ = {
 
 [node name="MenuControl" parent="." instance=ExtResource( 4 )]
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 1888.0
+margin_bottom = 1048.0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="character_created" from="ViewportContainer/Viewport/World3D" to="." method="_on_World3D_character_created"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_Control_mouse_entered"]
 [connection signal="buyer_values_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_buyer_values_updated"]
@@ -73,3 +106,4 @@ __meta__ = {
 [connection signal="seller_values_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_seller_values_updated"]
 [connection signal="speed_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_speed_updated"]
 [connection signal="start_button_pressed" from="MenuControl" to="." method="_on_MenuControl_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/TextureButton" to="." method="_on_TextureButton_pressed"]

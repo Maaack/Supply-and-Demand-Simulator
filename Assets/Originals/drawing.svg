@@ -58,9 +58,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="418.116"
-     inkscape:cy="777.53191"
+     inkscape:zoom="3.959798"
+     inkscape:cx="564.32054"
+     inkscape:cy="704.8618"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -231,5 +231,63 @@
        inkscape:export-xdpi="72"
        inkscape:export-ydpi="72"
        sodipodi:nodetypes="ccc" />
+    <ellipse
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       ry="11.252044"
+       rx="11.26038"
+       style="fill:#e6e6e6;fill-opacity:1;stroke-width:0.53419298"
+       cy="89.064308"
+       cx="139.38106"
+       id="ellipse4630-3"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/CloseButtonHighlighted.png" />
+    <circle
+       style="fill:#333333;fill-opacity:1;stroke-width:0.5217312"
+       id="path4701-6"
+       cx="139.36943"
+       cy="89.063385"
+       r="9.6427126"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/UpButton.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:none;stroke:#e6e6e6;stroke-width:1.97000003;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 135.10475,84.849438 8.68626,8.552624"
+       id="path865"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path876"
+       d="m 143.79101,84.849438 -8.68626,8.552624"
+       style="fill:none;stroke:#e6e6e6;stroke-width:1.97000003;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <ellipse
+       inkscape:export-ydpi="72"
+       inkscape:export-xdpi="72"
+       ry="11.252044"
+       rx="11.260381"
+       style="fill:#666666;fill-opacity:1;stroke-width:0.53419298"
+       cy="111.24768"
+       cx="162.96759"
+       id="ellipse4630-3-5"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/CloseButton.png" />
+    <circle
+       style="fill:#333333;fill-opacity:1;stroke-width:0.5217312"
+       id="path4701-6-3"
+       cx="162.95596"
+       cy="111.24676"
+       r="9.6427126"
+       inkscape:export-filename="/home/marek/Projects/Godot/Economy-Sim/Assets/Originals/pngs/UpButton.png"
+       inkscape:export-xdpi="72"
+       inkscape:export-ydpi="72" />
+    <path
+       style="fill:none;stroke:#666666;stroke-width:1.97000015;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.69129,107.03281 8.68626,8.55262"
+       id="path865-5"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path876-6"
+       d="m 167.37755,107.03281 -8.68626,8.55262"
+       style="fill:none;stroke:#666666;stroke-width:1.97000015;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

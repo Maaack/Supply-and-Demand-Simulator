@@ -66,3 +66,6 @@ func _on_Control_mouse_entered():
 
 func _on_SettingsPanel2_speed_updated(value):
 	world_3d.time_scale = value
+
+func _on_TextureButton_pressed():
+	get_tree().quit()
