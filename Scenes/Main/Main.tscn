@@ -85,7 +85,7 @@ margin_right = 1888.0
 margin_bottom = 1048.0
 mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/Control"]
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/Control"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -64.0
@@ -106,4 +106,4 @@ __meta__ = {
 [connection signal="seller_values_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_seller_values_updated"]
 [connection signal="speed_updated" from="SettingsPanel2" to="." method="_on_SettingsPanel2_speed_updated"]
 [connection signal="start_button_pressed" from="MenuControl" to="." method="_on_MenuControl_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Control/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/CloseButton" to="." method="_on_CloseButton_pressed"]
