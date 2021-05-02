@@ -58,6 +58,7 @@ _global_script_class_icons={
 
 config/name="Supply and Demand Simulator"
 run/main_scene="res://Scenes/Main/Main.tscn"
+boot_splash/image="res://Assets/Originals/composites/CrowdWithApples1280x720.png"
 config/icon="res://icon.png"
 
 [display]

@@ -86,6 +86,7 @@ margin_bottom = 1048.0
 mouse_filter = 2
 
 [node name="CloseButton" type="TextureButton" parent="MarginContainer/Control"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -64.0
