@@ -164,7 +164,10 @@ func update_buyer_prices():
 	var ratio : float
 	var amount : float
 	for character in buyers_array:
-		ratio = float(buyer_price_iter) / float(buyers_array.size())
+		if buyers_array.size() < 2:
+			ratio = 0.5
+		else:
+			ratio = float(buyer_price_iter) / float(buyers_array.size() - 1)
 		amount = ((ratio * (buyer_max_price - buyer_min_price)) + buyer_min_price) * 100.0
 		buyer_price_iter += 1
 		character.set_price_point(amount)
@@ -175,7 +178,10 @@ func update_seller_prices():
 	var ratio : float
 	var amount : float
 	for character in sellers_array:
-		ratio = float(seller_price_iter) / float(sellers_array.size())
+		if sellers_array.size() < 2:
+			ratio = 0.5
+		else:
+			ratio = float(seller_price_iter) / float(sellers_array.size() - 1)
 		amount = ((ratio * (seller_max_price - seller_min_price)) + seller_min_price) * 100.0
 		seller_price_iter += 1
 		character.set_price_point(amount)
