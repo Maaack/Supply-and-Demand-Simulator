@@ -14,10 +14,10 @@ export(float, 0.0, 1.0) var seller_max_price : float = 0.8
 export(LayoutSettings) var character_layout : int = 0
 
 func init_values():
-	$MarginContainer/VBoxContainer/CharacterCountLabel/SpinBox.get_line_edit().text = "%3d" % (character_count)
+	$MarginContainer/VBoxContainer/CharacterCountLabel/SpinBox.value = character_count
 
 func update_values():
-	character_count = int($MarginContainer/VBoxContainer/CharacterCountLabel/SpinBox.get_line_edit().text)
+	character_count = int($MarginContainer/VBoxContainer/CharacterCountLabel/SpinBox.value)
 
 func _on_StartButton_pressed():
 	update_values()
