@@ -12,6 +12,7 @@ enum ItemTypes{APPLE, COINS}
 
 export var buyer_color : Color
 export var seller_color : Color
+export var prefilled_price_points : int = 3
 
 onready var buyer_character = $CharacterSpatial/BuyerCharacter
 onready var seller_character = $CharacterSpatial/SellerCharacter
@@ -118,8 +119,22 @@ func get_avg_of_array(values : Array):
 		sum += i
 	return sum / values.size()
 
+func get_weighted_avg_of_array(values : Array, cutoff : int = 5, weight_adjust : float = 0.8):
+	var sum : float = 0.0
+	var weight_sum : float = 0.0
+	var iter : int = 0
+	var reverse_values = values.duplicate()
+	reverse_values.invert()
+	var sliced_values : Array = reverse_values.slice(0, cutoff)
+	for value in sliced_values:
+		var current_weight = pow(weight_adjust, iter)
+		sum += value * current_weight
+		weight_sum += current_weight
+		iter += 1
+	return sum / weight_sum
+
 func get_avg_of_all_transactions():
-	return get_avg_of_array(all_transactions)
+	return get_weighted_avg_of_array(all_transactions)
 
 func get_avg_of_recent_transactions():
 	return get_avg_of_array(recent_transactions)
@@ -131,17 +146,17 @@ func adjust_current_price_point():
 	var avg : float = get_avg_of_recent_transactions()
 	if avg == 0.0:
 		avg = get_lower_expectations()
-	var lifetime_avg : float = get_avg_of_all_transactions()
-	if lifetime_avg != 0.0:
-		avg = (avg + lifetime_avg) / 2.0
-	set_current_price_point(avg)
-	all_transactions += recent_transactions
+	all_transactions.append(avg)
+	var weighted_avg : float = get_avg_of_all_transactions()
+	set_current_price_point(weighted_avg)
 	recent_transactions.clear()
 
 func reset_history():
 	all_transactions.clear()
 	recent_transactions.clear()
 	current_price_point = price_point
+	for i in range(prefilled_price_points):
+		all_transactions.append(price_point)
 
 func _ready():
 	$DoubleStatsBar3D.character = self
