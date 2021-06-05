@@ -103,6 +103,10 @@ func add_character():
 		character = add_buyer()
 	else:
 		character = add_seller()
+	return character
+
+func add_character_and_update_positions():
+	var character = add_character()
 	_update_character_positions()
 	return character
 
@@ -290,7 +294,8 @@ func _on_SimulateStep_timeout():
 	_next_step()
 
 func _on_SpawnDelay_timeout():
-	add_character()
+	var character = add_character()
+	_update_character_position(character, character_array.size() - 1)
 	if character_array.size() < target_character_count:
 		$SpawnDelay.start()
 	else:

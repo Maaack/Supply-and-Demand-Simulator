@@ -31,7 +31,7 @@ func reset_simulation():
 
 func add_character():
 	if is_instance_valid(world_3d):
-		world_3d.add_character()
+		world_3d.add_character_and_update_positions()
 		world_3d.update_character_prices()
 		reset_graph_order()
 
