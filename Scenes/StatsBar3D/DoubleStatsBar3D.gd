@@ -30,11 +30,9 @@ func set_character(new_character : Character3D):
 			character.disconnect("price_point_updated", self, "set_base")
 			character.disconnect("role_updated", self, "set_role")
 		character = new_character
-		set_role(character.character_role)
-		set_base(character.price_point)
-		set_current(character.current_price_point)
 		character.connect("current_price_point_updated", self, "set_current")
 		character.connect("price_point_updated", self, "set_base")
 		character.connect("role_updated", self, "set_role")
-
-	
+	set_role(character.character_role)
+	set_base(character.price_point)
+	set_current(character.current_price_point)
