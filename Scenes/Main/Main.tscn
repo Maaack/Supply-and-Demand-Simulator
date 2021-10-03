@@ -51,9 +51,6 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="GraphWorld" parent="ViewportContainer2/Viewport" instance=ExtResource( 7 )]
-camera_max_size = 35.0
-stat_max_scale = 7.5
-max_graph_count = 50
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0

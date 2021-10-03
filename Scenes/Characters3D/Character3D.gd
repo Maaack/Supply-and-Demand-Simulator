@@ -7,12 +7,10 @@ signal current_price_point_updated(price)
 signal price_point_updated(price)
 signal role_updated(role)
 
-enum CharacterRoles{BUYER, SELLER}
+enum CharacterRoles{NONE, BUYER, SELLER}
 enum ItemTypes{APPLE, COINS}
 enum MoveTarget{NONE, HOME, CHARACTER}
 
-export var buyer_color : Color
-export var seller_color : Color
 export var prefilled_price_points : int = 3
 
 onready var buyer_character = $CharacterSpatial/BuyerCharacter

@@ -2,7 +2,7 @@ tool
 extends Spatial
 
 
-enum CharacterRoles{BUYER, SELLER}
+enum CharacterRoles{NONE, BUYER, SELLER}
 enum StatsType{MATTE, METAL}
 
 export(CharacterRoles) var character_role : int
