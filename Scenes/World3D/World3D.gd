@@ -39,13 +39,13 @@ func get_time_to():
 		return
 	return default_time_to/time_scale
 
-func set_character_position_to_circle(character : Character3D, index : int):
+func _set_character_home_position_to_circle(character : Character3D, index : int):
 	var radius : float = 40.0
 	var a : float = index * 2 * PI / target_character_count
 	var new_vector : Vector3 = Vector3(sin(a), 0, cos(a)) * radius 
 	character.set_home(new_vector)
 
-func set_character_position_to_double_circle(character : Character3D, index : int):
+func _set_character_home_position_to_double_circle(character : Character3D, index : int):
 	var radius : float = 15.0
 	var radius_outer : float = 40.0
 	var buyer_count = get_target_buyer_count()
@@ -125,7 +125,7 @@ func swap_to_role(role : int):
 	if not character is Character3D:
 		return
 	character.set_role(role)
-	_update_character_position(character, index)
+	_update_character_home_position(character, index)
 
 func update_ratio(value : float):
 	var prior_count : int = get_target_buyer_count()
@@ -149,19 +149,23 @@ func update_layout(new_layout : int):
 	character_layout_setting = new_layout
 	_update_character_positions()
 
-func _update_character_position(character, index):
+func _update_character_home_position(character, index):
 	match(character_layout_setting):
 		CharacterLayout.CIRCLE:
-			set_character_position_to_circle(character, index)
+			_set_character_home_position_to_circle(character, index)
 		CharacterLayout.DOUBLE_CIRCLE:
-			set_character_position_to_double_circle(character, index)
-	character.go_home(get_time_to())
+			_set_character_home_position_to_double_circle(character, index)
+
+func _update_character_home_position_and_move(character : Character3D, iter : int):
+		_update_character_home_position(character, iter)
+		character.move_to_current_target(get_time_to())
 
 func _update_character_positions():
-	for iter in buyers_array.size():
-		_update_character_position(buyers_array[iter], iter)
 	for iter in sellers_array.size():
-		_update_character_position(sellers_array[iter], iter + buyers_array.size())
+		var position_iter = iter + buyers_array.size()
+		_update_character_home_position_and_move(sellers_array[iter], position_iter)
+	for iter in buyers_array.size():
+		_update_character_home_position_and_move(buyers_array[iter], iter)
 
 func update_buyer_prices():
 	var buyer_price_iter : int = 0
@@ -194,11 +198,6 @@ func update_seller_prices():
 func update_character_prices():
 	update_buyer_prices()
 	update_seller_prices()
-
-func get_buying_position(buyer : Character3D, seller : Character3D, buy_distance : float = 5.0):
-	var delta_vector : Vector3 = seller.translation - buyer.translation
-	var buy_vector = delta_vector.normalized() * buy_distance
-	return delta_vector - buy_vector + buyer.translation
 
 func _update_simulate_step_time():
 	$SimulateStep.wait_time = default_step_time / (time_scale * time_mod)
@@ -247,8 +246,7 @@ func _next_travel_cycle():
 		var random_seller_i = randi() % sellers_array.size()
 		var random_seller = sellers_array[random_seller_i]
 		buyer_seller_map[active_character] = random_seller
-		var buy_position = get_buying_position(active_character, random_seller)
-		active_character.move_to(buy_position, get_time_to())
+		active_character.go_to_character(random_seller, get_time_to())
 	return _increment_buyers_only()
 
 func _next_trade_cycle():
@@ -295,7 +293,7 @@ func _on_SimulateStep_timeout():
 
 func _on_SpawnDelay_timeout():
 	var character = add_character()
-	_update_character_position(character, character_array.size() - 1)
+	_update_character_home_position_and_move(character, character_array.size() - 1)
 	if character_array.size() < target_character_count:
 		$SpawnDelay.start()
 	else:

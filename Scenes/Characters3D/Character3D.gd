@@ -9,6 +9,7 @@ signal role_updated(role)
 
 enum CharacterRoles{BUYER, SELLER}
 enum ItemTypes{APPLE, COINS}
+enum MoveTarget{NONE, HOME, CHARACTER}
 
 export var buyer_color : Color
 export var seller_color : Color
@@ -25,8 +26,11 @@ var character_role : int
 var price_point : float
 var current_price_point : float
 var home_position : Vector3
+var target_position : Vector3
+var going_to : int = MoveTarget.HOME
 var recent_transactions : Array = []
 var all_transactions : Array = []
+var character_target = null
 
 func set_home(position : Vector3):
 	home_position = position
@@ -75,9 +79,10 @@ func face_to(new_translation : Vector3, time_to : float = 1.0):
 	$Tween.start()
 
 func move_to(new_translation : Vector3, time_to : float = 1.0):
+	target_position = new_translation
 	var vector_mask : Vector3 = Vector3.FORWARD + Vector3.RIGHT
 	var masked_translation : Vector3 = translation * vector_mask
-	var new_masked_translation : Vector3 = new_translation * vector_mask
+	var new_masked_translation : Vector3 = target_position * vector_mask
 	if new_masked_translation == masked_translation:
 		return
 	if $Tween.is_active():
@@ -88,8 +93,27 @@ func move_to(new_translation : Vector3, time_to : float = 1.0):
 	$Tween.start()
 
 func go_home(time_to : float = 1.0):
+	going_to = MoveTarget.HOME
 	move_to(home_position, time_to)
 
+func get_target_between(start_translation, target_translation, target_distance : float = 5.0) -> Vector3:
+	var delta_vector : Vector3 =  target_translation - start_translation
+	var shortened_vector = delta_vector - (delta_vector.normalized() * target_distance)
+	return shortened_vector + start_translation
+
+func go_to_character(character, time_to : float = 1.0):
+	character_target = character
+	going_to = MoveTarget.CHARACTER
+	var target_nearby : Vector3 = get_target_between(home_position, character_target.home_position)
+	move_to(target_nearby, time_to)
+
+func move_to_current_target(time_to : float = 1.0):
+	match(going_to):
+		MoveTarget.HOME:
+			go_home(time_to)
+		MoveTarget.CHARACTER:
+			go_to_character(character_target, time_to)
+			
 func add_item(item_type : int):
 	var item_node
 	match(item_type):
