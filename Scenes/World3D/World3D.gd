@@ -27,8 +27,8 @@ var sellers_array : Array = []
 var character_iter : int = 0
 var buyers_iter : int = 0
 var sellers_iter : int = 0
-var default_time_to : float = 0.5
-var default_step_time : float = 0.5
+var default_time_to : float = 0.35
+var default_step_time : float = 0.35
 var buyer_seller_map : Dictionary = {}
 var seller_return_map : Dictionary = {}
 var active_character : Character3D

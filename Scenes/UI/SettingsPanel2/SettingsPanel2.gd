@@ -9,7 +9,7 @@ signal speed_updated(value)
 signal character_added
 signal toggle_activated
 
-const SPEED_EXPONENT_MAX = 5
+const SPEED_EXPONENT_MAX = 3
 const SPEED_EXPONENT_MIN = -2
 enum LayoutSettings{ONE_CIRCLE, TWO_CIRCLES}
 
@@ -18,7 +18,7 @@ export(float, 0.0, 1.0) var buyer_min_price : float = 0.4
 export(float, 0.0, 1.0) var buyer_max_price : float = 1.0
 export(float, 0.0, 1.0) var seller_min_price : float = 0.0
 export(float, 0.0, 1.0) var seller_max_price : float = 0.6
-export(int, -2, 5) var speed_exponent : int = 0
+export(int, -2, 3) var speed_exponent : int = 0
 export(LayoutSettings) var character_layout : int = 0
 
 onready var buyer_slider_1 = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/BuyerSlider1
