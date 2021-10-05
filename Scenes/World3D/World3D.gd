@@ -126,6 +126,7 @@ func swap_to_role(role : int):
 		return
 	character.set_role(role)
 	_update_character_home_position(character, index)
+	character.go_home()
 
 func update_ratio(value : float):
 	var prior_count : int = get_target_buyer_count()
@@ -139,8 +140,7 @@ func update_ratio(value : float):
 			swap_to_role(Character3D.CharacterRoles.SELLER)
 	if prior_count != current_count:
 		update_character_prices()
-		if character_layout_setting == CharacterLayout.DOUBLE_CIRCLE:
-			_update_character_positions()
+		_update_character_positions()
 
 func _ready():
 	randomize()
