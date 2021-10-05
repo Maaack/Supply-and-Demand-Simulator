@@ -17,7 +17,9 @@ var max_value : float = 100.0
 var current_value : float = 100.0 setget set_value
 var full_size : float = 2.8
 var stat_scale : float = 1.0
+var stat_tween_time : float = 0.4
 var stats_bar_top_offset : Vector3 = Vector3(0.0, 0.015, 0.0)
+var glow_bar_top_offset : Vector3 = Vector3(0.0, 0.03, 0.0)
 
 func update_material():
 	var material : SpatialMaterial
@@ -48,12 +50,16 @@ func set_type(value : int):
 func set_value(value : float):
 	current_value = value
 	var scale_ratio = current_value / max_value
-	var final_scale_y = scale_ratio * stat_scale
-	if final_scale_y != $StatsBar.scale.y:
-		$StatsBar.scale.y = final_scale_y
-		$GlowBar.scale.y = final_scale_y
-		$StatsBarTop.translation.y = (scale_ratio * full_size * stat_scale) + stats_bar_top_offset.y
-		$GlowBarTop.translation.y = $StatsBarTop.translation.y
+	var stats_bar_scale_y = scale_ratio * stat_scale
+	if stats_bar_scale_y != $StatsBar.scale.y:
+		var stats_bar_size = stats_bar_scale_y * full_size
+		var stats_bar_top_translation_y : float = stats_bar_size + stats_bar_top_offset.y
+		var glow_bar_top_translation_y : float = stats_bar_size + glow_bar_top_offset.y
+		$Tween.interpolate_property($StatsBar, "scale:y", null, stats_bar_scale_y, stat_tween_time)
+		$Tween.interpolate_property($StatsBarTop, "translation:y", null, stats_bar_top_translation_y, stat_tween_time)
+		$Tween.interpolate_property($GlowBar, "scale:y", null, stats_bar_scale_y, stat_tween_time)
+		$Tween.interpolate_property($GlowBarTop, "translation:y", null, glow_bar_top_translation_y, stat_tween_time)
+		$Tween.start()
 		$GlowBar.glow_out()
 		$GlowBarTop.glow_out()
 
