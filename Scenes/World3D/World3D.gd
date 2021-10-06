@@ -250,12 +250,18 @@ func _next_travel_cycle():
 	return _increment_buyers_only()
 
 func _next_trade_cycle():
+	while(active_character.is_home()):
+		if _increment_buyers_only():
+			return true
 	if is_instance_valid(active_character) and active_character in buyer_seller_map:
 		do_transaction(active_character, buyer_seller_map[active_character])
 		buyer_seller_map.erase(active_character)
 	return _increment_buyers_only()
 
 func _next_return_cycle():
+	while(active_character.is_home()):
+		if _increment_buyers_only():
+			return true
 	if is_instance_valid(active_character):
 		active_character.go_home(get_time_to())
 	return _increment_buyers_only()
