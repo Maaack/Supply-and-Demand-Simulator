@@ -4,17 +4,7 @@ onready var world_3d = $ViewportContainer/Viewport/World3D
 onready var graph_world = $ViewportContainer2/Viewport/GraphWorld
 
 func _on_World3D_character_created(character):
-	var graph = graph_world.add_graph()
-	if is_instance_valid(graph):
-		graph.character = character
-		var character_list : Array = world_3d.get_character_list()
-		for iter in character_list.size():
-			graph_world.assign_character_index(character_list[iter], iter)
-
-func reset_graph_order():
-	var character_list : Array = world_3d.get_character_list()
-	for iter in character_list.size():
-		graph_world.assign_character_index(character_list[iter], iter)
+	var graph = graph_world.add_graph_for_character(character)
 
 func reset_simulation():
 	world_3d.target_character_count = $MenuControl.get_character_count()
@@ -33,7 +23,6 @@ func add_character():
 	if is_instance_valid(world_3d):
 		world_3d.add_character_and_update_positions()
 		world_3d.update_character_prices()
-		reset_graph_order()
 
 func _on_MenuControl_start_button_pressed():
 	reset_simulation()

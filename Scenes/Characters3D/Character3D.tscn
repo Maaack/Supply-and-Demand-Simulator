@@ -14,8 +14,6 @@
 
 [node name="Character3D" type="Spatial"]
 script = ExtResource( 1 )
-buyer_color = Color( 0.964706, 0.592157, 0.156863, 1 )
-seller_color = Color( 0.164706, 0.4, 0.898039, 1 )
 
 [node name="Tween" type="Tween" parent="."]
 

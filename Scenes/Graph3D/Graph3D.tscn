@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Originals/gltf/StatsBaseMaterial.material" type="Material" id=1]
+[ext_resource path="res://Scenes/Graph3D/Graph3D.gd" type="Script" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 1 )
+size = Vector3( 1.65, 0.06, 0.4 )
+
+[node name="Graph3D" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="StatsFlatBase3D" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
