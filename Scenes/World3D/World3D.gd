@@ -250,7 +250,7 @@ func _next_travel_cycle():
 	return _increment_buyers_only()
 
 func _next_trade_cycle():
-	while(active_character.is_home()):
+	while(is_instance_valid(active_character) and active_character.is_home()):
 		if _increment_buyers_only():
 			return true
 	if is_instance_valid(active_character) and active_character in buyer_seller_map:
@@ -259,7 +259,7 @@ func _next_trade_cycle():
 	return _increment_buyers_only()
 
 func _next_return_cycle():
-	while(active_character.is_home()):
+	while(is_instance_valid(active_character) and active_character.is_home()):
 		if _increment_buyers_only():
 			return true
 	if is_instance_valid(active_character):
