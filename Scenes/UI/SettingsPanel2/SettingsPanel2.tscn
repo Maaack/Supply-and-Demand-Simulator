@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/UI/CustomHSlider/CustomHSlider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Originals/pngs/UpButtonHighlighted.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Assets/Sourced/Icons/fast-forward-button_48x48.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Originals/pngs/BuyerRange.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Originals/pngs/SellerRange.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Originals/pngs/DownButton.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Originals/pngs/DownButtonHighlighted.png" type="Texture" id=17]
 
 [node name="SettingsPanel2" type="Panel"]
 anchor_top = 1.0
@@ -80,11 +82,13 @@ custom_constants/separation = 48
 
 [node name="BuyerSlider1" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_right = 736.0
+value = 40.0
 
 [node name="BuyerSlider2" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 80.0
 margin_right = 736.0
 margin_bottom = 112.0
+value = 100.0
 
 [node name="RatioSlider" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 160.0
@@ -93,7 +97,7 @@ margin_bottom = 192.0
 hint_tooltip = "Seller/Buyer Ratio"
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 6 )
-value = 50.0
+value = 33.0
 grabber = ExtResource( 6 )
 grabber_highlight = ExtResource( 7 )
 
@@ -137,6 +141,7 @@ margin_right = 736.0
 margin_bottom = 112.0
 custom_icons/grabber_highlight = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 4 )
+value = 60.0
 grabber = ExtResource( 4 )
 grabber_highlight = ExtResource( 5 )
 
@@ -185,7 +190,7 @@ margin_right = 864.0
 margin_bottom = 51.0
 texture_normal = ExtResource( 13 )
 
-[node name="ToggleButton" type="TextureButton" parent="."]
+[node name="UpButton" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -32.0
@@ -195,6 +200,21 @@ margin_bottom = 32.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownButton" type="TextureButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -216,6 +236,6 @@ one_shot = true
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/SpeedDownButton" to="." method="_on_SpeedDownButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/SpeedUpButton" to="." method="_on_SpeedUpButton_pressed"]
-[connection signal="mouse_entered" from="ToggleButton" to="." method="_on_ToggleButton_mouse_entered"]
-[connection signal="pressed" from="ToggleButton" to="." method="_on_ToggleButton_pressed"]
+[connection signal="pressed" from="UpButton" to="." method="_on_UpButton_pressed"]
+[connection signal="pressed" from="DownButton" to="." method="_on_DownButton_pressed"]
 [connection signal="timeout" from="HideDelayTimer" to="." method="_on_HideDelayTimer_timeout"]

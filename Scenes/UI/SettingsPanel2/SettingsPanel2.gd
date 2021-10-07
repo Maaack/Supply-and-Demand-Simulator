@@ -36,7 +36,7 @@ func init_values():
 	buyer_slider_2.value = int(buyer_max_price * 100.0)
 	seller_slider_1.value = int(seller_min_price * 100.0)
 	seller_slider_2.value = int(seller_max_price * 100.0)
-	ratio_slider.value = int(character_ratio * 100.0)
+	ratio_slider.value = int((1.0 - character_ratio) * 100.0)
 	layout_button.selected = character_layout
 
 func update_buyer_values():
@@ -93,21 +93,31 @@ func _on_Button_pressed():
 	if ready:
 		emit_signal("character_added")
 
+func _point_up():
+	$DownButton.hide()
+	$UpButton.show()
+
+func _point_down():
+	$UpButton.hide()
+	$DownButton.show()
+
 func activate_panel():
+	if activated:
+		return
+	activated = true
+	$AnimationPlayer.play("SettingsPanel2MoveUp")
+	emit_signal("toggle_activated")
+	_point_down()
+
+func deactivate_panel():
 	if not activated:
-		activated = true
-		$AnimationPlayer.play("SettingsPanel2MoveUp")
-		emit_signal("toggle_activated")
-
-func _on_ToggleButton_mouse_entered():
-	activate_panel()
-
-func _on_ToggleButton_pressed():
-	activate_panel()
-
-func _on_HideDelayTimer_timeout():
+		return
 	$AnimationPlayer.play("SettingsPanel2MoveDown")
 	activated = false
+	_point_up()
+
+func _on_HideDelayTimer_timeout():
+	deactivate_panel()
 
 func _on_SettingsPanel2_mouse_entered():
 	$HideDelayTimer.stop()
@@ -136,3 +146,9 @@ func _on_SpeedUpButton_pressed():
 	if speed_exponent < SPEED_EXPONENT_MAX:
 		speed_exponent += 1
 		update_speed()
+
+func _on_UpButton_pressed():
+	activate_panel()
+
+func _on_DownButton_pressed():
+	deactivate_panel()
