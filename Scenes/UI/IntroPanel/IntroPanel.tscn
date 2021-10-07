@@ -67,6 +67,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Version Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -153.0
+margin_top = -45.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
+text = "v 1.1.0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="InspirationLabel" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -98,12 +113,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buyer" type="Sprite" parent="."]
-position = Vector2( 1378, 400 )
+[node name="Buyer" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -385.0
+margin_top = 68.0
+margin_right = -65.0
+margin_bottom = 708.0
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Seller" type="Sprite" parent="."]
-position = Vector2( 288, 400 )
+[node name="Seller" type="TextureRect" parent="."]
+margin_left = 68.0
+margin_top = 76.0
+margin_right = 388.0
+margin_bottom = 716.0
 texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
