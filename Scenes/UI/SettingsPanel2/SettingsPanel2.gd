@@ -1,3 +1,4 @@
+tool
 extends Panel
 
 
@@ -9,7 +10,7 @@ signal speed_updated(value)
 signal character_added
 signal toggle_activated
 
-const SPEED_EXPONENT_MAX = 3
+const SPEED_EXPONENT_MAX = 4
 const SPEED_EXPONENT_MIN = -2
 enum LayoutSettings{ONE_CIRCLE, TWO_CIRCLES}
 
